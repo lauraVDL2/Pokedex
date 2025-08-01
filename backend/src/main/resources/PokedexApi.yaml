@@ -1,0 +1,146 @@
+openapi: 3.0.1
+info:
+  title: User API
+  version: 1.0.0
+  description: API for the Pokedex
+paths:
+  /pokedex/pokemon/create:
+    post:
+      tags:
+        - Pokemon
+      summary: Create a new pokemon
+      description: Add a new pokemon to the db.
+      operationId: post-pokemon-create
+      requestBody:
+        description: Pokemon object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pokemon'
+      responses:
+        '201':
+          description: Pokemon created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pokemon'
+        '400':
+          description: Invalid input
+  /pokedex/pokemon/delete/{entryNumber}:
+    delete:
+      tags:
+        - Pokemon
+      summary: Delete a pokemon knowing its entryNumber
+      operationId: delete-pokemon
+      parameters:
+        - name: entryNumber
+          in: path
+          required: true
+          description: Entry number of the Pokemon to delete
+          schema:
+            type: integer
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Entry deleted successfully
+components:
+  schemas:
+    PokemonType:
+      type: string
+      enum:
+        - Normal
+        - Fire
+        - Water
+        - Grass
+        - Electric
+        - Ice
+        - Fighting
+        - Poison
+        - Ground
+        - Flying
+        - Psychic
+        - Bug
+        - Rock
+        - Ghost
+        - Dragon
+        - Dark
+        - Steel
+        - Fairy
+    Pokemon:
+      type: object
+      properties:
+        entryNumber:
+          type: integer
+          required: true
+        name:
+          type: string
+          required: true
+        description:
+          type: string
+        height:
+          type: string
+        weight:
+          type: string
+        sprites:
+          type: array
+          items:
+            title: 'Sprite'
+            type: object
+            properties:
+              frontDefaultBig:
+                type: string
+              frontDefaultMedium:
+                type: string
+              frontDefaultSmall:
+                type: string
+        types:
+          type: array
+          items:
+            $ref: '#/components/schemas/PokemonType'
+        firstAbility:
+          type: string
+        secondAbility:
+          type: string
+        hiddenAbility:
+          type: string
+        baseStatistics:
+          title: 'BaseStatistic'
+          type: object
+          properties:
+            hp:
+              type: integer
+            attack:
+              type: integer
+            defense:
+              type: integer
+            specialAttack:
+              type: integer
+            specialDefense:
+              type: integer
+            speed:
+              type: integer
+        previousEvolutionStageEntry:
+          type: integer
+        nextEvolutionStageEntry:
+          type: integer
+        wayToEvolvedStage:
+          type: string
+          description: 'If the pokemon is in evolved form, what are the requirements to make it evolve to its present stage'
+        moves:
+          type: array
+          items:
+            title: 'Move'
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                $ref: '#/components/schemas/PokemonType'
+              wayToLearn:
+                type: string
