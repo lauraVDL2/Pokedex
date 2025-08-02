@@ -3,10 +3,12 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.BaseStatistic;
 import io.swagger.model.Move;
+import io.swagger.model.PokemonAbility;
+import io.swagger.model.PokemonBaseStatistic;
+import io.swagger.model.PokemonEvolutionStageEntry;
+import io.swagger.model.PokemonSprite;
 import io.swagger.model.PokemonType;
-import io.swagger.model.Sprite;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ import javax.validation.constraints.*;
  * Pokemon
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-01T21:13:43.527214351+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-02T10:11:08.881295011+02:00[Europe/Paris]")
 
 
 public class Pokemon   {
@@ -39,29 +41,20 @@ public class Pokemon   {
 
   @JsonProperty("sprites")
   @Valid
-  private List<Sprite> sprites = null;
+  private List<PokemonSprite> sprites = null;
 
   @JsonProperty("types")
   @Valid
   private List<PokemonType> types = null;
 
-  @JsonProperty("firstAbility")
-  private String firstAbility = null;
-
-  @JsonProperty("secondAbility")
-  private String secondAbility = null;
-
-  @JsonProperty("hiddenAbility")
-  private String hiddenAbility = null;
+  @JsonProperty("ability")
+  private PokemonAbility ability = null;
 
   @JsonProperty("baseStatistics")
-  private BaseStatistic baseStatistics = null;
+  private PokemonBaseStatistic baseStatistics = null;
 
-  @JsonProperty("previousEvolutionStageEntry")
-  private Integer previousEvolutionStageEntry = null;
-
-  @JsonProperty("nextEvolutionStageEntry")
-  private Integer nextEvolutionStageEntry = null;
+  @JsonProperty("evolutionStageEntry")
+  private PokemonEvolutionStageEntry evolutionStageEntry = null;
 
   @JsonProperty("wayToEvolvedStage")
   private String wayToEvolvedStage = null;
@@ -165,14 +158,14 @@ public class Pokemon   {
     this.weight = weight;
   }
 
-  public Pokemon sprites(List<Sprite> sprites) {
+  public Pokemon sprites(List<PokemonSprite> sprites) {
     this.sprites = sprites;
     return this;
   }
 
-  public Pokemon addSpritesItem(Sprite spritesItem) {
+  public Pokemon addSpritesItem(PokemonSprite spritesItem) {
     if (this.sprites == null) {
-      this.sprites = new ArrayList<Sprite>();
+      this.sprites = new ArrayList<PokemonSprite>();
     }
     this.sprites.add(spritesItem);
     return this;
@@ -184,11 +177,11 @@ public class Pokemon   {
    **/
   @Schema(description = "")
       @Valid
-    public List<Sprite> getSprites() {
+    public List<PokemonSprite> getSprites() {
     return sprites;
   }
 
-  public void setSprites(List<Sprite> sprites) {
+  public void setSprites(List<PokemonSprite> sprites) {
     this.sprites = sprites;
   }
 
@@ -219,64 +212,27 @@ public class Pokemon   {
     this.types = types;
   }
 
-  public Pokemon firstAbility(String firstAbility) {
-    this.firstAbility = firstAbility;
+  public Pokemon ability(PokemonAbility ability) {
+    this.ability = ability;
     return this;
   }
 
   /**
-   * Get firstAbility
-   * @return firstAbility
+   * Get ability
+   * @return ability
    **/
   @Schema(description = "")
   
-    public String getFirstAbility() {
-    return firstAbility;
+    @Valid
+    public PokemonAbility getAbility() {
+    return ability;
   }
 
-  public void setFirstAbility(String firstAbility) {
-    this.firstAbility = firstAbility;
+  public void setAbility(PokemonAbility ability) {
+    this.ability = ability;
   }
 
-  public Pokemon secondAbility(String secondAbility) {
-    this.secondAbility = secondAbility;
-    return this;
-  }
-
-  /**
-   * Get secondAbility
-   * @return secondAbility
-   **/
-  @Schema(description = "")
-  
-    public String getSecondAbility() {
-    return secondAbility;
-  }
-
-  public void setSecondAbility(String secondAbility) {
-    this.secondAbility = secondAbility;
-  }
-
-  public Pokemon hiddenAbility(String hiddenAbility) {
-    this.hiddenAbility = hiddenAbility;
-    return this;
-  }
-
-  /**
-   * Get hiddenAbility
-   * @return hiddenAbility
-   **/
-  @Schema(description = "")
-  
-    public String getHiddenAbility() {
-    return hiddenAbility;
-  }
-
-  public void setHiddenAbility(String hiddenAbility) {
-    this.hiddenAbility = hiddenAbility;
-  }
-
-  public Pokemon baseStatistics(BaseStatistic baseStatistics) {
+  public Pokemon baseStatistics(PokemonBaseStatistic baseStatistics) {
     this.baseStatistics = baseStatistics;
     return this;
   }
@@ -288,50 +244,32 @@ public class Pokemon   {
   @Schema(description = "")
   
     @Valid
-    public BaseStatistic getBaseStatistics() {
+    public PokemonBaseStatistic getBaseStatistics() {
     return baseStatistics;
   }
 
-  public void setBaseStatistics(BaseStatistic baseStatistics) {
+  public void setBaseStatistics(PokemonBaseStatistic baseStatistics) {
     this.baseStatistics = baseStatistics;
   }
 
-  public Pokemon previousEvolutionStageEntry(Integer previousEvolutionStageEntry) {
-    this.previousEvolutionStageEntry = previousEvolutionStageEntry;
+  public Pokemon evolutionStageEntry(PokemonEvolutionStageEntry evolutionStageEntry) {
+    this.evolutionStageEntry = evolutionStageEntry;
     return this;
   }
 
   /**
-   * Get previousEvolutionStageEntry
-   * @return previousEvolutionStageEntry
+   * Get evolutionStageEntry
+   * @return evolutionStageEntry
    **/
   @Schema(description = "")
   
-    public Integer getPreviousEvolutionStageEntry() {
-    return previousEvolutionStageEntry;
+    @Valid
+    public PokemonEvolutionStageEntry getEvolutionStageEntry() {
+    return evolutionStageEntry;
   }
 
-  public void setPreviousEvolutionStageEntry(Integer previousEvolutionStageEntry) {
-    this.previousEvolutionStageEntry = previousEvolutionStageEntry;
-  }
-
-  public Pokemon nextEvolutionStageEntry(Integer nextEvolutionStageEntry) {
-    this.nextEvolutionStageEntry = nextEvolutionStageEntry;
-    return this;
-  }
-
-  /**
-   * Get nextEvolutionStageEntry
-   * @return nextEvolutionStageEntry
-   **/
-  @Schema(description = "")
-  
-    public Integer getNextEvolutionStageEntry() {
-    return nextEvolutionStageEntry;
-  }
-
-  public void setNextEvolutionStageEntry(Integer nextEvolutionStageEntry) {
-    this.nextEvolutionStageEntry = nextEvolutionStageEntry;
+  public void setEvolutionStageEntry(PokemonEvolutionStageEntry evolutionStageEntry) {
+    this.evolutionStageEntry = evolutionStageEntry;
   }
 
   public Pokemon wayToEvolvedStage(String wayToEvolvedStage) {
@@ -397,19 +335,16 @@ public class Pokemon   {
         Objects.equals(this.weight, pokemon.weight) &&
         Objects.equals(this.sprites, pokemon.sprites) &&
         Objects.equals(this.types, pokemon.types) &&
-        Objects.equals(this.firstAbility, pokemon.firstAbility) &&
-        Objects.equals(this.secondAbility, pokemon.secondAbility) &&
-        Objects.equals(this.hiddenAbility, pokemon.hiddenAbility) &&
+        Objects.equals(this.ability, pokemon.ability) &&
         Objects.equals(this.baseStatistics, pokemon.baseStatistics) &&
-        Objects.equals(this.previousEvolutionStageEntry, pokemon.previousEvolutionStageEntry) &&
-        Objects.equals(this.nextEvolutionStageEntry, pokemon.nextEvolutionStageEntry) &&
+        Objects.equals(this.evolutionStageEntry, pokemon.evolutionStageEntry) &&
         Objects.equals(this.wayToEvolvedStage, pokemon.wayToEvolvedStage) &&
         Objects.equals(this.moves, pokemon.moves);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entryNumber, name, description, height, weight, sprites, types, firstAbility, secondAbility, hiddenAbility, baseStatistics, previousEvolutionStageEntry, nextEvolutionStageEntry, wayToEvolvedStage, moves);
+    return Objects.hash(entryNumber, name, description, height, weight, sprites, types, ability, baseStatistics, evolutionStageEntry, wayToEvolvedStage, moves);
   }
 
   @Override
@@ -424,12 +359,9 @@ public class Pokemon   {
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    sprites: ").append(toIndentedString(sprites)).append("\n");
     sb.append("    types: ").append(toIndentedString(types)).append("\n");
-    sb.append("    firstAbility: ").append(toIndentedString(firstAbility)).append("\n");
-    sb.append("    secondAbility: ").append(toIndentedString(secondAbility)).append("\n");
-    sb.append("    hiddenAbility: ").append(toIndentedString(hiddenAbility)).append("\n");
+    sb.append("    ability: ").append(toIndentedString(ability)).append("\n");
     sb.append("    baseStatistics: ").append(toIndentedString(baseStatistics)).append("\n");
-    sb.append("    previousEvolutionStageEntry: ").append(toIndentedString(previousEvolutionStageEntry)).append("\n");
-    sb.append("    nextEvolutionStageEntry: ").append(toIndentedString(nextEvolutionStageEntry)).append("\n");
+    sb.append("    evolutionStageEntry: ").append(toIndentedString(evolutionStageEntry)).append("\n");
     sb.append("    wayToEvolvedStage: ").append(toIndentedString(wayToEvolvedStage)).append("\n");
     sb.append("    moves: ").append(toIndentedString(moves)).append("\n");
     sb.append("}");

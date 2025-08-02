@@ -4,7 +4,33 @@ info:
   version: 1.0.0
   description: API for the Pokedex
 paths:
-  /pokedex/pokemon/create:
+  /pokedex/pokemon:
+    get:
+      tags:
+        - Pokemon
+      summary: Get all pokemon
+      description: Get all pokemon from the db, using a pagination. The default limit of pokemon per page is 50
+      operationId: get-all-pokemon
+      parameters:
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: The number of pokemon to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of pokemon to return
+      responses:
+        '200':
+          description: Pokemon fetched successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pokemon'
     post:
       tags:
         - Pokemon
@@ -26,7 +52,7 @@ paths:
                 $ref: '#/components/schemas/Pokemon'
         '400':
           description: Invalid input
-  /pokedex/pokemon/delete/{entryNumber}:
+  /pokedex/pokemon/{entryNumber}:
     delete:
       tags:
         - Pokemon
@@ -90,7 +116,7 @@ components:
         sprites:
           type: array
           items:
-            title: 'Sprite'
+            title: 'PokemonSprite'
             type: object
             properties:
               frontDefaultBig:
@@ -103,14 +129,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PokemonType'
-        firstAbility:
-          type: string
-        secondAbility:
-          type: string
-        hiddenAbility:
-          type: string
+        ability:
+          type: object
+          properties:
+            first:
+              type: string
+            second:
+              type: string
+            hidden:
+              type: string
         baseStatistics:
-          title: 'BaseStatistic'
+          title: 'PokemonBaseStatistic'
           type: object
           properties:
             hp:
@@ -125,10 +154,13 @@ components:
               type: integer
             speed:
               type: integer
-        previousEvolutionStageEntry:
-          type: integer
-        nextEvolutionStageEntry:
-          type: integer
+        evolutionStageEntry:
+          type: object
+          properties:
+            previous:
+              type: integer
+            next:
+              type: integer
         wayToEvolvedStage:
           type: string
           description: 'If the pokemon is in evolved form, what are the requirements to make it evolve to its present stage'
@@ -140,7 +172,9 @@ components:
             properties:
               name:
                 type: string
+                required: true
               type:
                 $ref: '#/components/schemas/PokemonType'
+                required: true
               wayToLearn:
                 type: string

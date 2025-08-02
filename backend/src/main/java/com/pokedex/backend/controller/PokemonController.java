@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class PokemonController implements PokedexApi {
 
@@ -20,7 +22,13 @@ public class PokemonController implements PokedexApi {
     public ResponseEntity<InlineResponse204> deletePokemon(Integer entryNumber) {
         String message = pokemonService.deletePokemon(entryNumber);
         InlineResponse204 inlineResponse204 = new InlineResponse204().message(message);
-        return new ResponseEntity<>(inlineResponse204, new HttpHeaders(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(inlineResponse204, new HttpHeaders(), HttpStatus.NO_CONTENT);
+    }
+
+    @Override
+    public ResponseEntity<List<Pokemon>> getAllPokemon(Integer offset, Integer limit) {
+        List<Pokemon> pokemonList = pokemonService.getAllPokemon(offset, limit);
+        return new ResponseEntity<>(pokemonList, new HttpHeaders(), HttpStatus.OK);
     }
 
     @Override

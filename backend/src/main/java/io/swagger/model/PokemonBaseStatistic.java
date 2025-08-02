@@ -9,13 +9,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * BaseStatistic
+ * PokemonBaseStatistic
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-01T21:13:43.527214351+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-02T10:11:08.881295011+02:00[Europe/Paris]")
 
 
-public class BaseStatistic   {
+public class PokemonBaseStatistic   {
   @JsonProperty("hp")
   private Integer hp = null;
 
@@ -34,7 +34,7 @@ public class BaseStatistic   {
   @JsonProperty("speed")
   private Integer speed = null;
 
-  public BaseStatistic hp(Integer hp) {
+  public PokemonBaseStatistic hp(Integer hp) {
     this.hp = hp;
     return this;
   }
@@ -53,7 +53,7 @@ public class BaseStatistic   {
     this.hp = hp;
   }
 
-  public BaseStatistic attack(Integer attack) {
+  public PokemonBaseStatistic attack(Integer attack) {
     this.attack = attack;
     return this;
   }
@@ -72,7 +72,7 @@ public class BaseStatistic   {
     this.attack = attack;
   }
 
-  public BaseStatistic defense(Integer defense) {
+  public PokemonBaseStatistic defense(Integer defense) {
     this.defense = defense;
     return this;
   }
@@ -91,7 +91,7 @@ public class BaseStatistic   {
     this.defense = defense;
   }
 
-  public BaseStatistic specialAttack(Integer specialAttack) {
+  public PokemonBaseStatistic specialAttack(Integer specialAttack) {
     this.specialAttack = specialAttack;
     return this;
   }
@@ -110,7 +110,7 @@ public class BaseStatistic   {
     this.specialAttack = specialAttack;
   }
 
-  public BaseStatistic specialDefense(Integer specialDefense) {
+  public PokemonBaseStatistic specialDefense(Integer specialDefense) {
     this.specialDefense = specialDefense;
     return this;
   }
@@ -129,7 +129,7 @@ public class BaseStatistic   {
     this.specialDefense = specialDefense;
   }
 
-  public BaseStatistic speed(Integer speed) {
+  public PokemonBaseStatistic speed(Integer speed) {
     this.speed = speed;
     return this;
   }
@@ -157,13 +157,13 @@ public class BaseStatistic   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BaseStatistic baseStatistic = (BaseStatistic) o;
-    return Objects.equals(this.hp, baseStatistic.hp) &&
-        Objects.equals(this.attack, baseStatistic.attack) &&
-        Objects.equals(this.defense, baseStatistic.defense) &&
-        Objects.equals(this.specialAttack, baseStatistic.specialAttack) &&
-        Objects.equals(this.specialDefense, baseStatistic.specialDefense) &&
-        Objects.equals(this.speed, baseStatistic.speed);
+    PokemonBaseStatistic pokemonBaseStatistic = (PokemonBaseStatistic) o;
+    return Objects.equals(this.hp, pokemonBaseStatistic.hp) &&
+        Objects.equals(this.attack, pokemonBaseStatistic.attack) &&
+        Objects.equals(this.defense, pokemonBaseStatistic.defense) &&
+        Objects.equals(this.specialAttack, pokemonBaseStatistic.specialAttack) &&
+        Objects.equals(this.specialDefense, pokemonBaseStatistic.specialDefense) &&
+        Objects.equals(this.speed, pokemonBaseStatistic.speed);
   }
 
   @Override
@@ -174,7 +174,7 @@ public class BaseStatistic   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BaseStatistic {\n");
+    sb.append("class PokemonBaseStatistic {\n");
     
     sb.append("    hp: ").append(toIndentedString(hp)).append("\n");
     sb.append("    attack: ").append(toIndentedString(attack)).append("\n");

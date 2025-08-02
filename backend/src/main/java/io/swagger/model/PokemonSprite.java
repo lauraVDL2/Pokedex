@@ -9,13 +9,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Sprite
+ * PokemonSprite
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-01T21:13:43.527214351+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-02T10:11:08.881295011+02:00[Europe/Paris]")
 
 
-public class Sprite   {
+public class PokemonSprite   {
   @JsonProperty("frontDefaultBig")
   private String frontDefaultBig = null;
 
@@ -25,7 +25,7 @@ public class Sprite   {
   @JsonProperty("frontDefaultSmall")
   private String frontDefaultSmall = null;
 
-  public Sprite frontDefaultBig(String frontDefaultBig) {
+  public PokemonSprite frontDefaultBig(String frontDefaultBig) {
     this.frontDefaultBig = frontDefaultBig;
     return this;
   }
@@ -44,7 +44,7 @@ public class Sprite   {
     this.frontDefaultBig = frontDefaultBig;
   }
 
-  public Sprite frontDefaultMedium(String frontDefaultMedium) {
+  public PokemonSprite frontDefaultMedium(String frontDefaultMedium) {
     this.frontDefaultMedium = frontDefaultMedium;
     return this;
   }
@@ -63,7 +63,7 @@ public class Sprite   {
     this.frontDefaultMedium = frontDefaultMedium;
   }
 
-  public Sprite frontDefaultSmall(String frontDefaultSmall) {
+  public PokemonSprite frontDefaultSmall(String frontDefaultSmall) {
     this.frontDefaultSmall = frontDefaultSmall;
     return this;
   }
@@ -91,10 +91,10 @@ public class Sprite   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Sprite sprite = (Sprite) o;
-    return Objects.equals(this.frontDefaultBig, sprite.frontDefaultBig) &&
-        Objects.equals(this.frontDefaultMedium, sprite.frontDefaultMedium) &&
-        Objects.equals(this.frontDefaultSmall, sprite.frontDefaultSmall);
+    PokemonSprite pokemonSprite = (PokemonSprite) o;
+    return Objects.equals(this.frontDefaultBig, pokemonSprite.frontDefaultBig) &&
+        Objects.equals(this.frontDefaultMedium, pokemonSprite.frontDefaultMedium) &&
+        Objects.equals(this.frontDefaultSmall, pokemonSprite.frontDefaultSmall);
   }
 
   @Override
@@ -105,7 +105,7 @@ public class Sprite   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Sprite {\n");
+    sb.append("class PokemonSprite {\n");
     
     sb.append("    frontDefaultBig: ").append(toIndentedString(frontDefaultBig)).append("\n");
     sb.append("    frontDefaultMedium: ").append(toIndentedString(frontDefaultMedium)).append("\n");

@@ -33,17 +33,26 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-01T21:13:43.527214351+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-02T10:11:08.881295011+02:00[Europe/Paris]")
 @Validated
 public interface PokedexApi {
 
     @Operation(summary = "Delete a pokemon knowing its entryNumber", description = "", tags={ "Pokemon" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "204", description = "", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse204.class))) })
-    @RequestMapping(value = "/pokedex/pokemon/delete/{entryNumber}",
+    @RequestMapping(value = "/pokedex/pokemon/{entryNumber}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
     ResponseEntity<InlineResponse204> deletePokemon(@Parameter(in = ParameterIn.PATH, description = "Entry number of the Pokemon to delete", required=true, schema=@Schema()) @PathVariable("entryNumber") Integer entryNumber);
+
+
+    @Operation(summary = "Get all pokemon", description = "Get all pokemon from the db, using a pagination. The default limit of pokemon per page is 50", tags={ "Pokemon" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Pokemon fetched successfully", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pokemon.class)))) })
+    @RequestMapping(value = "/pokedex/pokemon",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<Pokemon>> getAllPokemon(@Parameter(in = ParameterIn.QUERY, description = "The number of pokemon to skip before starting to collect the result set" ,schema=@Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset, @Parameter(in = ParameterIn.QUERY, description = "The numbers of pokemon to return" ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit);
 
 
     @Operation(summary = "Create a new pokemon", description = "Add a new pokemon to the db.", tags={ "Pokemon" })
@@ -51,7 +60,7 @@ public interface PokedexApi {
         @ApiResponse(responseCode = "201", description = "Pokemon created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pokemon.class))),
         
         @ApiResponse(responseCode = "400", description = "Invalid input") })
-    @RequestMapping(value = "/pokedex/pokemon/create",
+    @RequestMapping(value = "/pokedex/pokemon",
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
