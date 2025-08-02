@@ -14,6 +14,9 @@ public abstract class AbstractDao<T> {
     @Autowired
     MongoTemplate mongoTemplate;
 
+    /**
+     * To be called by its child classes before inserting an element to the database
+     */
     public abstract void createIndexes();
 
     public T createEntity(T entity, String collectionName) {
@@ -21,14 +24,20 @@ public abstract class AbstractDao<T> {
         return mongoTemplate.save(entity, collectionName);
     }
 
+    /**
+     * Generic get all with pagination without sorting
+     * @param offset
+     * @param limit
+     * @param collectionName
+     * @param entityClass
+     * @return
+     */
     public List<T> getAllEntityWithPagination(Integer offset, Integer limit, String collectionName, Class<T> entityClass) {
         Query query = new Query();
         // Calculate skip
         int skip = (offset - 1) * limit;
         query.skip(skip);
         query.limit(limit);
-        // Add ascending sort by 'entryNumber'
-        query.with(Sort.by(Sort.Direction.ASC, "entryNumber"));
         return mongoTemplate.find(query, entityClass, collectionName);
     }
 
