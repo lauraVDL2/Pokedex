@@ -77,16 +77,18 @@
 				<version>3.0.36</version>
 				<executions>
 					<execution>
+						<id>generate-pokedex-api</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
 							<output>${project.basedir}/</output>
-							<inputSpec>${project.basedir}/src/main/resources/PokedexApi.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/apis/PokedexApi.yaml</inputSpec>
 							<language>spring</language>
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<configOptions>
 								<interfaceOnly>true</interfaceOnly>
+								<useTags>true</useTags>
 							</configOptions>
 						</configuration>
 					</execution>

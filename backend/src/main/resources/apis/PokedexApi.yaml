@@ -75,8 +75,46 @@ paths:
                   message:
                     type: string
                     example: Entry deleted successfully
+  /pokedex/move:
+    post:
+      tags:
+        - Move
+      summary: Create a new move
+      description: Add a new move to the db.
+      operationId: post-move-create
+      requestBody:
+        description: Move object that needs to be added
+        content:
+          application/json:
+            schema:
+              move:
+                $ref: '#/components/schemas/Move'
 components:
   schemas:
+    Move:
+      type: object
+      properties:
+        name:
+          type: string
+          required: true
+        description:
+          type: string
+        type:
+          $ref: '#/components/schemas/PokemonType'
+        wayToLearn:
+          type: string
+        power:
+          type: integer
+        accuracy:
+          type: integer
+        pp:
+          type: integer
+        category:
+          type: string
+          enum:
+            - NON_DAMAGING
+            - SPECIAL
+            - PHYSICAL
     PokemonType:
       type: string
       enum:
@@ -167,14 +205,4 @@ components:
         moves:
           type: array
           items:
-            title: 'Move'
-            type: object
-            properties:
-              name:
-                type: string
-                required: true
-              type:
-                $ref: '#/components/schemas/PokemonType'
-                required: true
-              wayToLearn:
-                type: string
+            type: string

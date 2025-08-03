@@ -3,7 +3,6 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.Move;
 import io.swagger.model.PokemonAbility;
 import io.swagger.model.PokemonBaseStatistic;
 import io.swagger.model.PokemonEvolutionStageEntry;
@@ -20,7 +19,7 @@ import javax.validation.constraints.*;
  * Pokemon
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-02T10:11:08.881295011+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-03T20:49:59.201271836+02:00[Europe/Paris]")
 
 
 public class Pokemon   {
@@ -61,7 +60,7 @@ public class Pokemon   {
 
   @JsonProperty("moves")
   @Valid
-  private List<Move> moves = null;
+  private List<String> moves = null;
 
   public Pokemon entryNumber(Integer entryNumber) {
     this.entryNumber = entryNumber;
@@ -291,14 +290,14 @@ public class Pokemon   {
     this.wayToEvolvedStage = wayToEvolvedStage;
   }
 
-  public Pokemon moves(List<Move> moves) {
+  public Pokemon moves(List<String> moves) {
     this.moves = moves;
     return this;
   }
 
-  public Pokemon addMovesItem(Move movesItem) {
+  public Pokemon addMovesItem(String movesItem) {
     if (this.moves == null) {
-      this.moves = new ArrayList<Move>();
+      this.moves = new ArrayList<String>();
     }
     this.moves.add(movesItem);
     return this;
@@ -309,12 +308,12 @@ public class Pokemon   {
    * @return moves
    **/
   @Schema(description = "")
-      @Valid
-    public List<Move> getMoves() {
+  
+    public List<String> getMoves() {
     return moves;
   }
 
-  public void setMoves(List<Move> moves) {
+  public void setMoves(List<String> moves) {
     this.moves = moves;
   }
 

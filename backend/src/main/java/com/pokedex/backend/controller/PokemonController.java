@@ -1,7 +1,7 @@
 package com.pokedex.backend.controller;
 
 import com.pokedex.backend.service.PokemonService;
-import io.swagger.api.PokedexApi;
+import io.swagger.api.PokemonApi;
 import io.swagger.model.InlineResponse204;
 import io.swagger.model.Pokemon;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class PokemonController implements PokedexApi {
+public class PokemonController implements PokemonApi {
 
     @Autowired
     PokemonService pokemonService;

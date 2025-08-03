@@ -33,9 +33,9 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-02T10:11:08.881295011+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-03T20:49:59.201271836+02:00[Europe/Paris]")
 @Validated
-public interface PokedexApi {
+public interface PokemonApi {
 
     @Operation(summary = "Delete a pokemon knowing its entryNumber", description = "", tags={ "Pokemon" })
     @ApiResponses(value = { 
