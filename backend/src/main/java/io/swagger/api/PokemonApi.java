@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-03T20:49:59.201271836+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-04T20:33:24.639662301+02:00[Europe/Paris]")
 @Validated
 public interface PokemonApi {
 
