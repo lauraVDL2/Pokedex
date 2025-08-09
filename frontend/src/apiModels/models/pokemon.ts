@@ -26,11 +26,11 @@ export interface Pokemon {
   height?: string;
   moves?: Array<string>;
   name?: string;
-  sprites?: Array<{
+  sprite?: {
 'frontDefaultBig'?: string;
 'frontDefaultMedium'?: string;
 'frontDefaultSmall'?: string;
-}>;
+};
   types?: Array<PokemonType>;
 
   /**

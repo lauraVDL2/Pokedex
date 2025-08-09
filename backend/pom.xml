@@ -87,7 +87,7 @@
 						</goals>
 						<configuration>
 							<output>${project.basedir}/</output>
-							<inputSpec>../PokedexApi.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/PokedexApi.yaml</inputSpec>
 							<language>spring</language>
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<configOptions>

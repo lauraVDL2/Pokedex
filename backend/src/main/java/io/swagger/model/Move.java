@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Move
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T17:09:30.903085228+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T19:52:40.450618401+02:00[Europe/Paris]")
 
 
 public class Move   {

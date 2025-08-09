@@ -2,16 +2,34 @@
   {
     "entryNumber": 1,
     "name": "Bulbasaur",
-    "types": ["GRASS", "POISON"]
+    "types": [
+      "GRASS",
+      "POISON"
+    ],
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/bulbasaur.png"
+    }
   },
   {
     "entryNumber": 2,
     "name": "Ivysaur",
-    "types": ["GRASS", "POISON"]
+    "types": [
+      "GRASS",
+      "POISON"
+    ],
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/ivysaur.png"
+    }
   },
   {
     "entryNumber": 3,
     "name": "Venusaur",
-    "types": ["GRASS", "POISON"]
+    "types": [
+      "GRASS",
+      "POISON"
+    ],
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/venusaur.png"
+    }
   }
 ]

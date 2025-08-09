@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.Move;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -31,16 +32,20 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T17:09:30.903085228+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T19:52:40.450618401+02:00[Europe/Paris]")
 @Validated
 public interface MoveApi {
 
     @Operation(summary = "Create a new move", description = "Add a new move to the db.", tags={ "Move" })
-    @ApiResponses(value = {  })
-    @RequestMapping(value = "/pokedex/move",
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "201", description = "Move created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Move.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Invalid input") })
+    @RequestMapping(value = "/v1/pokedex/move",
+        produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> postMoveCreate(@Parameter(in = ParameterIn.DEFAULT, description = "Move object that needs to be added", schema=@Schema()) @Valid @RequestBody Object body);
+    ResponseEntity<Move> postMoveCreate(@Parameter(in = ParameterIn.DEFAULT, description = "Move object that needs to be added", schema=@Schema()) @Valid @RequestBody Object body);
 
 }
 

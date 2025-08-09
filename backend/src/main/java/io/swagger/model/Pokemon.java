@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
  * Pokemon
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T17:09:30.903085228+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T19:52:40.450618401+02:00[Europe/Paris]")
 
 
 public class Pokemon   {
@@ -38,9 +38,8 @@ public class Pokemon   {
   @JsonProperty("weight")
   private String weight = null;
 
-  @JsonProperty("sprites")
-  @Valid
-  private List<PokemonSprite> sprites = null;
+  @JsonProperty("sprite")
+  private PokemonSprite sprite = null;
 
   @JsonProperty("types")
   @Valid
@@ -157,31 +156,24 @@ public class Pokemon   {
     this.weight = weight;
   }
 
-  public Pokemon sprites(List<PokemonSprite> sprites) {
-    this.sprites = sprites;
-    return this;
-  }
-
-  public Pokemon addSpritesItem(PokemonSprite spritesItem) {
-    if (this.sprites == null) {
-      this.sprites = new ArrayList<PokemonSprite>();
-    }
-    this.sprites.add(spritesItem);
+  public Pokemon sprite(PokemonSprite sprite) {
+    this.sprite = sprite;
     return this;
   }
 
   /**
-   * Get sprites
-   * @return sprites
+   * Get sprite
+   * @return sprite
    **/
   @Schema(description = "")
-      @Valid
-    public List<PokemonSprite> getSprites() {
-    return sprites;
+  
+    @Valid
+    public PokemonSprite getSprite() {
+    return sprite;
   }
 
-  public void setSprites(List<PokemonSprite> sprites) {
-    this.sprites = sprites;
+  public void setSprite(PokemonSprite sprite) {
+    this.sprite = sprite;
   }
 
   public Pokemon types(List<PokemonType> types) {
@@ -332,7 +324,7 @@ public class Pokemon   {
         Objects.equals(this.description, pokemon.description) &&
         Objects.equals(this.height, pokemon.height) &&
         Objects.equals(this.weight, pokemon.weight) &&
-        Objects.equals(this.sprites, pokemon.sprites) &&
+        Objects.equals(this.sprite, pokemon.sprite) &&
         Objects.equals(this.types, pokemon.types) &&
         Objects.equals(this.ability, pokemon.ability) &&
         Objects.equals(this.baseStatistics, pokemon.baseStatistics) &&
@@ -343,7 +335,7 @@ public class Pokemon   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(entryNumber, name, description, height, weight, sprites, types, ability, baseStatistics, evolutionStageEntry, wayToEvolvedStage, moves);
+    return Objects.hash(entryNumber, name, description, height, weight, sprite, types, ability, baseStatistics, evolutionStageEntry, wayToEvolvedStage, moves);
   }
 
   @Override
@@ -356,7 +348,7 @@ public class Pokemon   {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
-    sb.append("    sprites: ").append(toIndentedString(sprites)).append("\n");
+    sb.append("    sprite: ").append(toIndentedString(sprite)).append("\n");
     sb.append("    types: ").append(toIndentedString(types)).append("\n");
     sb.append("    ability: ").append(toIndentedString(ability)).append("\n");
     sb.append("    baseStatistics: ").append(toIndentedString(baseStatistics)).append("\n");

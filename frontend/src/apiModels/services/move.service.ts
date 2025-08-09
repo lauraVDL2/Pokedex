@@ -11,6 +11,7 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
+import { Move } from '../models/move';
 import { postMoveCreate } from '../fn/move/post-move-create';
 import { PostMoveCreate$Params } from '../fn/move/post-move-create';
 
@@ -21,7 +22,7 @@ export class MoveService extends BaseService {
   }
 
   /** Path part for operation `postMoveCreate()` */
-  static readonly PostMoveCreatePath = '/pokedex/move';
+  static readonly PostMoveCreatePath = '/v1/pokedex/move';
 
   /**
    * Create a new move.
@@ -33,7 +34,7 @@ export class MoveService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  postMoveCreate$Response(params?: PostMoveCreate$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  postMoveCreate$Response(params?: PostMoveCreate$Params, context?: HttpContext): Observable<StrictHttpResponse<Move>> {
     return postMoveCreate(this.http, this.rootUrl, params, context);
   }
 
@@ -47,9 +48,9 @@ export class MoveService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  postMoveCreate(params?: PostMoveCreate$Params, context?: HttpContext): Observable<void> {
+  postMoveCreate(params?: PostMoveCreate$Params, context?: HttpContext): Observable<Move> {
     return this.postMoveCreate$Response(params, context).pipe(
-      map((r: StrictHttpResponse<void>): void => r.body)
+      map((r: StrictHttpResponse<Move>): Move => r.body)
     );
   }
 

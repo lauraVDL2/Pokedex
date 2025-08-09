@@ -37,4 +37,4 @@ export function deletePokemon(http: HttpClient, rootUrl: string, params: DeleteP
   );
 }
 
-deletePokemon.PATH = '/pokedex/pokemon/{entryNumber}';
+deletePokemon.PATH = '/v1/pokedex/pokemon/{entryNumber}';

@@ -34,4 +34,4 @@ export function postPokemonCreate(http: HttpClient, rootUrl: string, params?: Po
   );
 }
 
-postPokemonCreate.PATH = '/pokedex/pokemon';
+postPokemonCreate.PATH = '/v1/pokedex/pokemon';

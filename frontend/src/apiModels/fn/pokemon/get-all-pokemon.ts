@@ -40,4 +40,4 @@ export function getAllPokemon(http: HttpClient, rootUrl: string, params?: GetAll
   );
 }
 
-getAllPokemon.PATH = '/pokedex/pokemon';
+getAllPokemon.PATH = '/v1/pokedex/pokemon';

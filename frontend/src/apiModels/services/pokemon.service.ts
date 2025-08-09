@@ -26,7 +26,7 @@ export class PokemonService extends BaseService {
   }
 
   /** Path part for operation `getAllPokemon()` */
-  static readonly GetAllPokemonPath = '/pokedex/pokemon';
+  static readonly GetAllPokemonPath = '/v1/pokedex/pokemon';
 
   /**
    * Get all pokemon.
@@ -59,7 +59,7 @@ export class PokemonService extends BaseService {
   }
 
   /** Path part for operation `postPokemonCreate()` */
-  static readonly PostPokemonCreatePath = '/pokedex/pokemon';
+  static readonly PostPokemonCreatePath = '/v1/pokedex/pokemon';
 
   /**
    * Create a new pokemon.
@@ -92,7 +92,7 @@ export class PokemonService extends BaseService {
   }
 
   /** Path part for operation `deletePokemon()` */
-  static readonly DeletePokemonPath = '/pokedex/pokemon/{entryNumber}';
+  static readonly DeletePokemonPath = '/v1/pokedex/pokemon/{entryNumber}';
 
   /**
    * Delete a pokemon knowing its entryNumber.

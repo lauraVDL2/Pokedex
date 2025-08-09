@@ -89,6 +89,15 @@ paths:
             schema:
               move:
                 $ref: '#/components/schemas/Move'
+      responses:
+        '201':
+          description: Move created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Move'
+        '400':
+          description: Invalid input
 components:
   schemas:
     Move:
@@ -151,18 +160,16 @@ components:
           type: string
         weight:
           type: string
-        sprites:
-          type: array
-          items:
-            title: 'PokemonSprite'
-            type: object
-            properties:
-              frontDefaultBig:
-                type: string
-              frontDefaultMedium:
-                type: string
-              frontDefaultSmall:
-                type: string
+        sprite:
+          title: 'PokemonSprite'
+          type: object
+          properties:
+            frontDefaultBig:
+              type: string
+            frontDefaultMedium:
+              type: string
+            frontDefaultSmall:
+              type: string
         types:
           type: array
           items:

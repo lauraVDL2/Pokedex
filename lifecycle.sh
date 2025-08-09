@@ -28,7 +28,7 @@ function generate_files() {
   mvn clean install
   cd ..
   cd frontend/
-  ng-openapi-gen --input ../PokedexApi.yaml --output ./src/apiModels/
+  ng-openapi-gen --input ../backend/src/main/resources/PokedexApi.yaml --output ./src/apiModels/
 }
 
 function purge() {
