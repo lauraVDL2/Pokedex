@@ -14,18 +14,28 @@ function rebuild() {
 }
 
 function create_indexes() {
-  docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.pokemon.createIndex({ entryNumber: 1 }, { unique: true })'
+  docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.Pokemon.createIndex({ entryNumber: 1 }, { unique: true })'
 }
 
 function create_pokemon() {
   docker cp $JSON_FILE mongodb:/tmp/pokemon_to_create.json
-  docker exec -it mongodb mongoimport -d "$DB_NAME" --collection "pokemon" --file "/tmp/pokemon_to_create.json" --jsonArray
+  docker exec -it mongodb mongoimport -d "$DB_NAME" --collection "Pokemon" --file "/tmp/pokemon_to_create.json" --jsonArray
   create_indexes
 }
 
+function generate_files() {
+  cd backend/
+  mvn clean install
+  cd ..
+  cd frontend/
+  ng-openapi-gen --input ../PokedexApi.yaml --output ./src/apiModels/
+}
+
 function purge() {
-  docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.pokemon.drop()'
+  docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.Pokemon.drop()'
   docker system prune -a --volumes
+  docker stop '$(docker ps -q)'
+  docker rm '$(docker ps -a -q)'
 }
 
 if [ "$1" = "build" ]; then
@@ -34,4 +44,6 @@ elif [ "$1" = "rebuild" ]; then
   rebuild
 elif [ "$1" = "purge" ]; then
   purge
+elif [ "$1" = "generate" ]; then
+  generate_files
 fi

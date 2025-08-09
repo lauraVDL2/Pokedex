@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * PokemonEvolutionStageEntry
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-04T20:33:24.639662301+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T17:09:30.903085228+02:00[Europe/Paris]")
 
 
 public class PokemonEvolutionStageEntry   {

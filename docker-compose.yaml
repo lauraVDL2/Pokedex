@@ -4,7 +4,7 @@ services:
   java-app:
     container_name: "java-app"
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -17,3 +17,10 @@ services:
     container_name: "mongodb"
     ports:
       - "27017:27017"
+  angular:
+    container_name: "angular"
+    build: ./frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - java-app

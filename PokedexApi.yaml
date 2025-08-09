@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: API for the Pokedex
 paths:
-  /pokedex/pokemon:
+  /v1/pokedex/pokemon:
     get:
       tags:
         - Pokemon
@@ -52,7 +52,7 @@ paths:
                 $ref: '#/components/schemas/Pokemon'
         '400':
           description: Invalid input
-  /pokedex/pokemon/{entryNumber}:
+  /v1/pokedex/pokemon/{entryNumber}:
     delete:
       tags:
         - Pokemon
@@ -75,7 +75,7 @@ paths:
                   message:
                     type: string
                     example: Entry deleted successfully
-  /pokedex/move:
+  /v1/pokedex/move:
     post:
       tags:
         - Move

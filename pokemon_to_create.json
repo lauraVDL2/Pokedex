@@ -2,16 +2,16 @@
   {
     "entryNumber": 1,
     "name": "Bulbasaur",
-    "types": ["Grass", "Poison"]
+    "types": ["GRASS", "POISON"]
   },
   {
     "entryNumber": 2,
     "name": "Ivysaur",
-    "types": ["Grass", "Poison"]
+    "types": ["GRASS", "POISON"]
   },
   {
     "entryNumber": 3,
     "name": "Venusaur",
-    "types": ["Grass", "Poison"]
+    "types": ["GRASS", "POISON"]
   }
 ]
