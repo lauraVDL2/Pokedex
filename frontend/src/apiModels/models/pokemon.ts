@@ -21,7 +21,7 @@ export interface Pokemon {
   entryNumber?: number;
   evolutionStageEntry?: {
 'previous'?: number;
-'next'?: number;
+'next'?: Array<number>;
 };
   height?: string;
   moves?: Array<string>;

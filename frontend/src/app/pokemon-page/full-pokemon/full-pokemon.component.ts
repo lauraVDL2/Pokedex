@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FullPokemonService } from '../../core/full-pokemon.service';
 import { Move, Pokemon } from '../../../apiModels/models';
 import { StrictHttpResponse } from '../../../apiModels/strict-http-response';
@@ -27,6 +27,7 @@ export class FullPokemonComponent implements OnInit {
     private fullPokemonService: FullPokemonService,
     private cdr: ChangeDetectorRef,
     private pokemonTypePipe: PokemonTypePipe,
+    private router: Router
   ) {
     this.route.params.subscribe(params => {
       this.entryNumber = params['entryNumber'];
@@ -35,6 +36,7 @@ export class FullPokemonComponent implements OnInit {
 
   onPageChange(entryNumber: number): void {
     this.entryNumber = entryNumber;
+    this.router.navigate(['/pokemon', entryNumber]);
     this.getFullPokemon(entryNumber);
   }
 

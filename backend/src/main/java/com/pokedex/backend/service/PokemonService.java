@@ -5,9 +5,12 @@ import com.pokedex.backend.dao.PokemonDao;
 import io.swagger.model.Pokemon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PokemonService {
@@ -46,14 +49,25 @@ public class PokemonService {
 
     public List<Pokemon> getEvolutions(Pokemon pokemon) {
         Pokemon currentPokemon = pokemon;
+        Pokemon nextPokemon = null;
         List<Pokemon> evolutions = new ArrayList<>();
         short i = 0;
         // One way
         while(currentPokemon.getEvolutionStageEntry() != null && i < 3) {
-            if (currentPokemon.getEvolutionStageEntry().getNext() == null) break;
-            Pokemon nextPokemon = pokemonDao.getPokemon(currentPokemon.getEvolutionStageEntry().getNext());
-            currentPokemon = nextPokemon;
-            evolutions.add(currentPokemon);
+            List<Integer> nextEvolvedStates = currentPokemon.getEvolutionStageEntry().getNext();
+            if (CollectionUtils.isEmpty(nextEvolvedStates)) break;
+            if (nextEvolvedStates.size() > 1) {
+                for(Integer next : nextEvolvedStates) {
+                    nextPokemon = pokemonDao.getPokemon(next);
+                    evolutions.add(nextPokemon);
+                }
+                currentPokemon = nextPokemon;
+            }
+            else {
+                nextPokemon = pokemonDao.getPokemon(nextEvolvedStates.getFirst());
+                currentPokemon = nextPokemon;
+                evolutions.add(currentPokemon);
+            }
             i++;
         }
         currentPokemon = pokemon;

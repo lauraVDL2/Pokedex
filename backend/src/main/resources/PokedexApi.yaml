@@ -234,7 +234,9 @@ components:
             previous:
               type: integer
             next:
-              type: integer
+              type: array
+              items:
+                type: integer
         wayToEvolvedStage:
           type: string
           description: 'If the pokemon is in evolved form, what are the requirements to make it evolve to its present stage'

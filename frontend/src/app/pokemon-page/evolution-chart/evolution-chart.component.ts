@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Pokemon } from '../../../apiModels/models';
 import { EvolutionChartService } from '../../core/evolution-chart.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './evolution-chart.component.html',
   styleUrl: './evolution-chart.component.css'
 })
-export class EvolutionChartComponent implements OnInit {
+export class EvolutionChartComponent implements OnInit, OnChanges {
   @Input() currentPokemon!: Pokemon;
   @Input() evolutions!: Pokemon[];
   evolutionChart!: Pokemon[];
@@ -25,7 +25,17 @@ export class EvolutionChartComponent implements OnInit {
     this.pageChange.emit(entryNumber);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['currentPokemon']) {
+      this.evolutionDisplay();
+    }
+  }
+
   ngOnInit(): void {
+    this.evolutionDisplay();
+  }
+
+  evolutionDisplay(): void {
     const map = this.evolutionChartService.sortEvolutionChart(this.currentPokemon, this.evolutions);
     this.evolutionChart = [];
     map.forEach((value, key, mymap) => {
@@ -33,7 +43,6 @@ export class EvolutionChartComponent implements OnInit {
     });
     this.gridTemplateColumns = `repeat(${this.evolutionChart.length}, 150px)`;
     this.cdr.detectChanges();
-    console.log(this.evolutionChart);
   }
 
 }

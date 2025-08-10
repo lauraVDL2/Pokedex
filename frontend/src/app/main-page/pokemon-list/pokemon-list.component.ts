@@ -3,11 +3,10 @@ import { Pokemon } from '../../../apiModels/models';
 import { PokemonListService } from '../../core/pokemon-list.service';
 import { PokemonTypePipe } from '../../common/pokemon-type.pipe';
 import { Router } from '@angular/router';
-import { EvolutionChartComponent } from "../../pokemon-page/evolution-chart/evolution-chart.component";
 
 @Component({
   selector: 'app-pokemon-list',
-  imports: [PokemonTypePipe, EvolutionChartComponent],
+  imports: [PokemonTypePipe],
   standalone: true,
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.css',

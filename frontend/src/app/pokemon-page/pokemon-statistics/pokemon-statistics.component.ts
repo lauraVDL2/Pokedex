@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Pokemon } from '../../../apiModels/models';
 import { PokemonTypePipe } from '../../common/pokemon-type.pipe';
 
@@ -9,7 +9,7 @@ import { PokemonTypePipe } from '../../common/pokemon-type.pipe';
   styleUrl: './pokemon-statistics.component.css',
   providers: [PokemonTypePipe]
 })
-export class PokemonStatisticsComponent implements OnInit {
+export class PokemonStatisticsComponent implements OnInit, OnChanges {
   @Input() pokemon!: Pokemon;
   backgroundColor: string = 'white';
 
@@ -23,7 +23,7 @@ export class PokemonStatisticsComponent implements OnInit {
     return (value / 255 * 100) + '%';
   }
 
-  ngOnInit(): void {
+  setColors() {
     const firstColor = this.pokemonTypePipe.transform(this.pokemon?.types?.at(0));
     if (this.pokemon?.types?.at(1)) {
       const secondColor = this.pokemonTypePipe.transform(this.pokemon?.types?.at(1));
@@ -33,5 +33,15 @@ export class PokemonStatisticsComponent implements OnInit {
       this.backgroundColor = firstColor;
     }
     this.cdr.detectChanges();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['pokemon']) {
+      this.setColors();
+    }
+  }
+
+  ngOnInit(): void {
+    this.setColors();
   }
 }

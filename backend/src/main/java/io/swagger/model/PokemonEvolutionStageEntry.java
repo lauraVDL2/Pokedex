@@ -4,6 +4,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -12,7 +14,7 @@ import javax.validation.constraints.*;
  * PokemonEvolutionStageEntry
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-10T10:39:04.297456010+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-10T20:32:41.534145034+02:00[Europe/Paris]")
 
 
 public class PokemonEvolutionStageEntry   {
@@ -20,7 +22,8 @@ public class PokemonEvolutionStageEntry   {
   private Integer previous = null;
 
   @JsonProperty("next")
-  private Integer next = null;
+  @Valid
+  private List<Integer> next = null;
 
   public PokemonEvolutionStageEntry previous(Integer previous) {
     this.previous = previous;
@@ -41,8 +44,16 @@ public class PokemonEvolutionStageEntry   {
     this.previous = previous;
   }
 
-  public PokemonEvolutionStageEntry next(Integer next) {
+  public PokemonEvolutionStageEntry next(List<Integer> next) {
     this.next = next;
+    return this;
+  }
+
+  public PokemonEvolutionStageEntry addNextItem(Integer nextItem) {
+    if (this.next == null) {
+      this.next = new ArrayList<Integer>();
+    }
+    this.next.add(nextItem);
     return this;
   }
 
@@ -52,11 +63,11 @@ public class PokemonEvolutionStageEntry   {
    **/
   @Schema(description = "")
   
-    public Integer getNext() {
+    public List<Integer> getNext() {
     return next;
   }
 
-  public void setNext(Integer next) {
+  public void setNext(List<Integer> next) {
     this.next = next;
   }
 

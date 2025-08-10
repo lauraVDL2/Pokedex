@@ -31,7 +31,7 @@
       "Vine Whip"
     ],
     "evolutionStageEntry": {
-      "next": 2
+      "next": [2]
     }
   },
   {
@@ -67,7 +67,7 @@
     ],
     "evolutionStageEntry": {
       "previous": 1,
-      "next": 3
+      "next": [3]
     },
     "wayToEvolvedStage": "Level 16"
   },
@@ -134,7 +134,7 @@
       "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png"
     },
     "evolutionStageEntry": {
-      "next": 5
+      "next": [5]
     }
   },
   {
@@ -165,7 +165,7 @@
     },
     "evolutionStageEntry": {
       "previous": 4,
-      "next": 6
+      "next": [6]
     },
     "wayToEvolvedStage": "Level 16"
   },
@@ -200,5 +200,129 @@
       "previous": 5
     },
     "wayToEvolvedStage": "Level 36"
+  },
+  {
+    "entryNumber": 133,
+    "name": "Eevee",
+    "types": [
+      "NORMAL"
+    ],
+    "description": "Its genetic code is irregular. It may mutate if it is exposed to radiation from element stones.",
+    "height": "0.3 m",
+    "weight": "6.5 kg",
+    "ability": {
+      "first": "Run Away",
+      "second": "Adaptability",
+      "hidden": "Anticipation"
+    },
+    "baseStatistics": {
+      "hp": 55,
+      "attack": 55,
+      "defense": 50,
+      "specialAttack": 45,
+      "specialDefense": 65,
+      "speed": 55
+    },
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/eevee.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/eevee.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/133.png"
+    },
+    "evolutionStageEntry": {
+      "next": [134,135,136]
+    }
+  },
+  {
+    "entryNumber": 134,
+    "name": "Vaporeon",
+    "types": [
+      "WATER"
+    ],
+    "description": "Its cell composition is similar to water molecules. As a result, it can’t be seen when it melts away into water.",
+    "height": "1.0 m",
+    "weight": "29.0 kg",
+    "ability": {
+      "first": "Water Absorb",
+      "hidden": "Hydration"
+    },
+    "baseStatistics": {
+      "hp": 130,
+      "attack": 65,
+      "defense": 60,
+      "specialAttack": 110,
+      "specialDefense": 95,
+      "speed": 65
+    },
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/vaporeon.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/vaporeon.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/134.png"
+    },
+    "evolutionStageEntry": {
+      "previous": 133
+    },
+    "wayToEvolvedStage": "Water Stone"
+  },
+  {
+    "entryNumber": 135,
+    "name": "Jolteon",
+    "types": [
+      "ELECTRIC"
+    ],
+    "description": "If agitated, it uses electricity to straighten out its fur and launch it in small bunches.",
+    "height": "0.8 m",
+    "weight": "24.5 kg",
+    "ability": {
+      "first": "Volt Absorb",
+      "hidden": "Quick Feet"
+    },
+    "baseStatistics": {
+      "hp": 65,
+      "attack": 65,
+      "defense": 60,
+      "specialAttack": 110,
+      "specialDefense": 95,
+      "speed": 130
+    },
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/jolteon.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/jolteon.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/135.png"
+    },
+    "evolutionStageEntry": {
+      "previous": 133
+    },
+    "wayToEvolvedStage": "Thunder Stone"
+  },
+  {
+    "entryNumber": 136,
+    "name": "Flareon",
+    "types": [
+      "FIRE"
+    ],
+    "description": "It fluffs out its fur collar to cool down its body temperature, which can reach 1,650 degrees Fahrenheit.",
+    "height": "0.9 m",
+    "weight": "25.0 kg",
+    "ability": {
+      "first": "Flash Fire",
+      "hidden": "Guts"
+    },
+    "baseStatistics": {
+      "hp": 65,
+      "attack": 130,
+      "defense": 60,
+      "specialAttack": 95,
+      "specialDefense": 110,
+      "speed": 65
+    },
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/flareon.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/flareon.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/136.png"
+    },
+    "evolutionStageEntry": {
+      "previous": 133
+    },
+    "wayToEvolvedStage": "Fire Stone"
   }
 ]
