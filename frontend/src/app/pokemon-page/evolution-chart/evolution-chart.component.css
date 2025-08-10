@@ -1,0 +1,22 @@
+h2 {
+    display: block;
+    border-bottom: 2px dotted white;
+}
+
+#gridChart {
+    display: grid;
+    grid-template-rows: auto;
+    justify-content: center;
+    gap: 15px;
+}
+
+#gridChart img {
+    display: block;
+    margin: auto;
+}
+
+.pokemonEvolution {
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}

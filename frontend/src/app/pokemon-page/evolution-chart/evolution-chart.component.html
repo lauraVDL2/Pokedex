@@ -1,0 +1,12 @@
+<h2>Evolution chart</h2>
+<div id="gridChart" [style.grid-template-columns]="gridTemplateColumns">
+@for(evolution of evolutionChart; track evolution.entryNumber) {
+    <div (click)="notifyParent(evolution.entryNumber)">
+        <img [src]="evolution?.sprite?.frontDefaultMedium">
+        <div class="pokemonEvolution">{{ evolution?.name }}</div>
+        @if (evolution?.wayToEvolvedStage) {
+            <div style="text-align: center;">{{ evolution.wayToEvolvedStage }}</div>
+        }
+    </div>
+}
+</div>

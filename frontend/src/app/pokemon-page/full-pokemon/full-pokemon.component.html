@@ -24,4 +24,12 @@
 
     <h2>Description</h2>
     <div>{{ pokemon?.description }}</div>
+
+    @if (pokemon?.evolutionStageEntry) {
+        <app-evolution-chart (pageChange)="onPageChange($event)" [currentPokemon]="pokemon!" [evolutions]="evolutions!"></app-evolution-chart>
+    }
+
+    @if (pokemon?.baseStatistics) {
+        <app-pokemon-statistics [pokemon]="pokemon!"></app-pokemon-statistics>
+    }
 </fieldset>

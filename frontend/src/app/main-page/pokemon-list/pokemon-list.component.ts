@@ -3,10 +3,11 @@ import { Pokemon } from '../../../apiModels/models';
 import { PokemonListService } from '../../core/pokemon-list.service';
 import { PokemonTypePipe } from '../../common/pokemon-type.pipe';
 import { Router } from '@angular/router';
+import { EvolutionChartComponent } from "../../pokemon-page/evolution-chart/evolution-chart.component";
 
 @Component({
   selector: 'app-pokemon-list',
-  imports: [PokemonTypePipe],
+  imports: [PokemonTypePipe, EvolutionChartComponent],
   standalone: true,
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.css',
@@ -25,7 +26,7 @@ export class PokemonListComponent implements OnInit {
     this.pokemonListService.getAllPokemon().subscribe({
       next: (data: Pokemon[]) => {
           this.pokemonList = data.slice();
-          document.body.style.backgroundColor = "#4B4B4B";
+          document.body.style.background = "#4B4B4B";
           this.cdr.detectChanges();
       },
       error: (err: any) => {

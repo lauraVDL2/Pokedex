@@ -6,7 +6,9 @@
             <h2>{{ pokemon.name }}</h2>
             <div class="types">
                 <div [style.backgroundColor]="pokemon?.types?.at(0) | pokemonType">{{ pokemon?.types?.at(0) }}</div>
-                <div [style.backgroundColor]="pokemon?.types?.at(1) | pokemonType">{{ pokemon?.types?.at(1) }}</div>
+                @if(pokemon?.types?.at(1)) {
+                    <div [style.backgroundColor]="pokemon?.types?.at(1) | pokemonType">{{ pokemon?.types?.at(1) }}</div>
+                }
             </div>
         </div>
     } @empty {

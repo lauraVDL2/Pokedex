@@ -37,6 +37,7 @@ function generate_files() {
 
 function purge() {
   docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.Pokemon.drop()'
+  docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.Move.drop()'
   docker system prune -a --volumes
   docker stop '$(docker ps -q)'
   docker rm '$(docker ps -a -q)'

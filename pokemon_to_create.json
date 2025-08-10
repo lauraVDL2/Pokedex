@@ -13,8 +13,17 @@
       "first": "Overgrow",
       "hidden": "Chlorophyll"
     },
+    "baseStatistics": {
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "specialAttack": 65,
+      "specialDefense": 65,
+      "speed": 45
+    },
     "sprite": {
       "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/bulbasaur.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/bulbasaur.png",
       "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
     },
     "moves": [
@@ -39,8 +48,17 @@
       "first": "Overgrow",
       "hidden": "Chlorophyll"
     },
+    "baseStatistics": {
+      "hp": 60,
+      "attack": 62,
+      "defense": 63,
+      "specialAttack": 80,
+      "specialDefense": 80,
+      "speed": 60
+    },
     "sprite": {
       "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/ivysaur.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/ivysaur.png",
       "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png"
     },
     "moves": [
@@ -50,7 +68,8 @@
     "evolutionStageEntry": {
       "previous": 1,
       "next": 3
-    }
+    },
+    "wayToEvolvedStage": "Level 16"
   },
   {
     "entryNumber": 3,
@@ -66,8 +85,17 @@
       "first": "Overgrow",
       "hidden": "Chlorophyll"
     },
+    "baseStatistics": {
+      "hp": 80,
+      "attack": 82,
+      "defense": 83,
+      "specialAttack": 100,
+      "specialDefense": 100,
+      "speed": 80
+    },
     "sprite": {
       "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/venusaur.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/venusaur.png",
       "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png"
     },
     "moves": [
@@ -76,6 +104,101 @@
     ],
     "evolutionStageEntry": {
       "previous": 2
+    },
+    "wayToEvolvedStage": "Level 32"
+  },
+  {
+    "entryNumber": 4,
+    "name": "Charmander",
+    "types": [
+      "FIRE"
+    ],
+    "description": "The fire on the tip of its tail is a measure of its life. If the Pokémon is healthy, its tail burns intensely.",
+    "height": "0.6 m",
+    "weight": "8.5 kg",
+    "ability": {
+      "first": "Blaze",
+      "hidden": "Solar Power"
+    },
+    "baseStatistics": {
+      "hp": 39,
+      "attack": 52,
+      "defense": 43,
+      "specialAttack": 60,
+      "specialDefense": 50,
+      "speed": 65
+    },
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/charmander.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/charmander.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png"
+    },
+    "evolutionStageEntry": {
+      "next": 5
     }
+  },
+  {
+    "entryNumber": 5,
+    "name": "Charmeleon",
+    "types": [
+      "FIRE"
+    ],
+    "description": "In the rocky mountains where Charmeleon live, their fiery tails shine at night like stars.",
+    "height": "1.1 m",
+    "weight": "19.0 kg",
+    "ability": {
+      "first": "Blaze",
+      "hidden": "Solar Power"
+    },
+    "baseStatistics": {
+      "hp": 58,
+      "attack": 64,
+      "defense": 58,
+      "specialAttack": 80,
+      "specialDefense": 65,
+      "speed": 80
+    },
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/charmeleon.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/charmeleon.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/005.png"
+    },
+    "evolutionStageEntry": {
+      "previous": 4,
+      "next": 6
+    },
+    "wayToEvolvedStage": "Level 16"
+  },
+  {
+    "entryNumber": 6,
+    "name": "Charizard",
+    "types": [
+      "FIRE",
+      "FLYING"
+    ],
+    "description": "It is said that Charizard’s fire burns hotter if it has experienced harsh battles.",
+    "height": "1.7 m",
+    "weight": "90.5 kg",
+    "ability": {
+      "first": "Blaze",
+      "hidden": "Solar Power"
+    },
+    "baseStatistics": {
+      "hp": 78,
+      "attack": 84,
+      "defense": 78,
+      "specialAttack": 109,
+      "specialDefense": 85,
+      "speed": 100
+    },
+    "sprite": {
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/charizard.png",
+      "frontDefaultMedium": "https://img.pokemondb.net/sprites/home/normal/1x/charizard.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png"
+    },
+    "evolutionStageEntry": {
+      "previous": 5
+    },
+    "wayToEvolvedStage": "Level 36"
   }
 ]
