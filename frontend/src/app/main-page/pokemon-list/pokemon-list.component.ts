@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angula
 import { Pokemon } from '../../../apiModels/models';
 import { PokemonListService } from '../../core/pokemon-list.service';
 import { PokemonTypePipe } from '../../common/pokemon-type.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -15,12 +16,16 @@ import { PokemonTypePipe } from '../../common/pokemon-type.pipe';
 export class PokemonListComponent implements OnInit {
   pokemonList: Pokemon[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, private pokemonListService: PokemonListService) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private pokemonListService: PokemonListService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.pokemonListService.getAllPokemon().subscribe({
       next: (data: Pokemon[]) => {
           this.pokemonList = data.slice();
+          document.body.style.backgroundColor = "#4B4B4B";
           this.cdr.detectChanges();
       },
       error: (err: any) => {
@@ -30,5 +35,9 @@ export class PokemonListComponent implements OnInit {
           console.log('Observable completed.');
       }
     });
+  }
+  
+  goToPokemon(entryNumber: number | undefined): void {
+    this.router.navigate(['/pokemon', entryNumber]);
   }
 }

@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse204;
 import io.swagger.model.Pokemon;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,7 +34,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-09T19:52:40.450618401+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-10T10:39:04.297456010+02:00[Europe/Paris]")
 @Validated
 public interface PokemonApi {
 
@@ -53,6 +54,15 @@ public interface PokemonApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<Pokemon>> getAllPokemon(@Parameter(in = ParameterIn.QUERY, description = "The number of pokemon to skip before starting to collect the result set" ,schema=@Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset, @Parameter(in = ParameterIn.QUERY, description = "The numbers of pokemon to return" ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit);
+
+
+    @Operation(summary = "Get a specific pokemon and its related resources", description = "", tags={ "Pokemon" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse200.class))) })
+    @RequestMapping(value = "/v1/pokedex/pokemon/{entryNumber}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<InlineResponse200> getPokemon(@Parameter(in = ParameterIn.PATH, description = "Entry number of the Pokemon to delete", required=true, schema=@Schema()) @PathVariable("entryNumber") Integer entryNumber);
 
 
     @Operation(summary = "Create a new pokemon", description = "Add a new pokemon to the db.", tags={ "Pokemon" })

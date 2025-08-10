@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Tackle",
+    "description": "Tackle is one of the most common and basic moves a Pokémon learns. It deals damage with no additional effects.",
+    "type": "NORMAL",
+    "wayToLearn": "lvl1",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "category": "PHYSICAL"
+  },
+  {
+    "name": "Vine Whip",
+    "description": "Vine Whip deals damage with no additional effect.",
+    "type": "GRASS",
+    "wayToLearn": "lvl1",
+    "power": 45,
+    "accuracy": 100,
+    "pp": 25,
+    "category": "PHYSICAL"
+  }
+]

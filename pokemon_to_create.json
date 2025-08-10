@@ -6,8 +6,23 @@
       "GRASS",
       "POISON"
     ],
+    "description": "Bulbasaur is a small, mainly turquoise amphibian Pokémon with red eyes and a green bulb on its back. It is based on a frog/toad, with the bulb resembling a plant bulb that grows into a flower as it evolves.",
+    "height": "0.7 m",
+    "weight": "6.9 kg",
+    "ability": {
+      "first": "Overgrow",
+      "hidden": "Chlorophyll"
+    },
     "sprite": {
-      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/bulbasaur.png"
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/bulbasaur.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"
+    },
+    "moves": [
+      "Tackle",
+      "Vine Whip"
+    ],
+    "evolutionStageEntry": {
+      "next": 2
     }
   },
   {
@@ -17,8 +32,24 @@
       "GRASS",
       "POISON"
     ],
+    "description": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom.",
+    "height": "1.0 m",
+    "weight": "13.0 kg",
+    "ability": {
+      "first": "Overgrow",
+      "hidden": "Chlorophyll"
+    },
     "sprite": {
-      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/ivysaur.png"
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/ivysaur.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png"
+    },
+    "moves": [
+      "Tackle",
+      "Vine Whip"
+    ],
+    "evolutionStageEntry": {
+      "previous": 1,
+      "next": 3
     }
   },
   {
@@ -28,8 +59,23 @@
       "GRASS",
       "POISON"
     ],
+    "description": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon.",
+    "height": "2.0 m",
+    "weight": "100.0 kg",
+    "ability": {
+      "first": "Overgrow",
+      "hidden": "Chlorophyll"
+    },
     "sprite": {
-      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/venusaur.png"
+      "frontDefaultSmall": "https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/venusaur.png",
+      "frontDefaultBig": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png"
+    },
+    "moves": [
+      "Tackle",
+      "Vine Whip"
+    ],
+    "evolutionStageEntry": {
+      "previous": 2
     }
   }
 ]

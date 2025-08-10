@@ -1,7 +1,8 @@
 #!/bin/bash
 
 DB_NAME="pokedex"
-JSON_FILE="pokemon_to_create.json"
+JSON_FILE_POKEMON="pokemon_to_create.json"
+JSON_FILE_MOVES="moves_to_create.json"
 
 function build() {
   docker compose up -d --build
@@ -15,11 +16,14 @@ function rebuild() {
 
 function create_indexes() {
   docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.Pokemon.createIndex({ entryNumber: 1 }, { unique: true })'
+  docker exec -it mongodb mongosh "$DB_NAME" --eval 'db.Move.createIndex({ name: 1 }, { unique: true })'
 }
 
 function create_pokemon() {
-  docker cp $JSON_FILE mongodb:/tmp/pokemon_to_create.json
+  docker cp $JSON_FILE_POKEMON mongodb:/tmp/pokemon_to_create.json
+  docker cp $JSON_FILE_MOVES mongodb:/tmp/moves_to_create.json
   docker exec -it mongodb mongoimport -d "$DB_NAME" --collection "Pokemon" --file "/tmp/pokemon_to_create.json" --jsonArray
+  docker exec -it mongodb mongoimport -d "$DB_NAME" --collection "Move" --file "/tmp/moves_to_create.json" --jsonArray
   create_indexes
 }
 

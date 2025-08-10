@@ -15,6 +15,9 @@ import { deletePokemon } from '../fn/pokemon/delete-pokemon';
 import { DeletePokemon$Params } from '../fn/pokemon/delete-pokemon';
 import { getAllPokemon } from '../fn/pokemon/get-all-pokemon';
 import { GetAllPokemon$Params } from '../fn/pokemon/get-all-pokemon';
+import { getPokemon } from '../fn/pokemon/get-pokemon';
+import { GetPokemon$Params } from '../fn/pokemon/get-pokemon';
+import { Move } from '../models/move';
 import { Pokemon } from '../models/pokemon';
 import { postPokemonCreate } from '../fn/pokemon/post-pokemon-create';
 import { PostPokemonCreate$Params } from '../fn/pokemon/post-pokemon-create';
@@ -88,6 +91,55 @@ export class PokemonService extends BaseService {
   postPokemonCreate(params?: PostPokemonCreate$Params, context?: HttpContext): Observable<Pokemon> {
     return this.postPokemonCreate$Response(params, context).pipe(
       map((r: StrictHttpResponse<Pokemon>): Pokemon => r.body)
+    );
+  }
+
+  /** Path part for operation `getPokemon()` */
+  static readonly GetPokemonPath = '/v1/pokedex/pokemon/{entryNumber}';
+
+  /**
+   * Get a specific pokemon and its related resources.
+   *
+   *
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getPokemon()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getPokemon$Response(params: GetPokemon$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+'pokemon'?: Pokemon;
+'moves'?: Array<Move>;
+'evolutions'?: Array<Pokemon>;
+}>> {
+    return getPokemon(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Get a specific pokemon and its related resources.
+   *
+   *
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getPokemon$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getPokemon(params: GetPokemon$Params, context?: HttpContext): Observable<{
+'pokemon'?: Pokemon;
+'moves'?: Array<Move>;
+'evolutions'?: Array<Pokemon>;
+}> {
+    return this.getPokemon$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+'pokemon'?: Pokemon;
+'moves'?: Array<Move>;
+'evolutions'?: Array<Pokemon>;
+}>): {
+'pokemon'?: Pokemon;
+'moves'?: Array<Move>;
+'evolutions'?: Array<Pokemon>;
+} => r.body)
     );
   }
 

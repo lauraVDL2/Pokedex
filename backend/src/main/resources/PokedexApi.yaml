@@ -53,6 +53,35 @@ paths:
         '400':
           description: Invalid input
   /v1/pokedex/pokemon/{entryNumber}:
+    get:
+      tags:
+        - Pokemon
+      summary: Get a specific pokemon and its related resources
+      operationId: get-pokemon
+      parameters:
+        - name: entryNumber
+          in: path
+          required: true
+          description: Entry number of the Pokemon to delete
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pokemon:
+                    $ref: '#/components/schemas/Pokemon'
+                  moves:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Move'
+                  evolutions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Pokemon'
     delete:
       tags:
         - Pokemon

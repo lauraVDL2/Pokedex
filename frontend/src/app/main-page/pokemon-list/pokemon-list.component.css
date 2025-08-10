@@ -1,8 +1,17 @@
+#pokemonList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 120px);
+    grid-template-rows: auto;
+    margin: auto;
+    gap: 10px;
+}
+
 .lightPokemon {
     background-color: #2e2e2e;
     box-sizing: border-box;
     padding: 5px;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .lightPokemon > span {

@@ -6,6 +6,7 @@ import io.swagger.model.Pokemon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,6 +38,35 @@ public class PokemonService {
             limit = 50;
         }
         return pokemonDao.getAllEntityWithPagination(offset, limit, "Pokemon", Pokemon.class);
+    }
+
+    public Pokemon getPokemon(Integer entryNumber) {
+        return pokemonDao.getPokemon(entryNumber);
+    }
+
+    public List<Pokemon> getEvolutions(Pokemon pokemon) {
+        Pokemon currentPokemon = pokemon;
+        List<Pokemon> evolutions = new ArrayList<>();
+        short i = 0;
+        // One way
+        while(currentPokemon.getEvolutionStageEntry() != null && i < 3) {
+            if (currentPokemon.getEvolutionStageEntry().getNext() == null) break;
+            Pokemon nextPokemon = pokemonDao.getPokemon(currentPokemon.getEvolutionStageEntry().getNext());
+            currentPokemon = nextPokemon;
+            evolutions.add(currentPokemon);
+            i++;
+        }
+        currentPokemon = pokemon;
+        i = 0;
+        //The other way
+        while(currentPokemon.getEvolutionStageEntry() != null && i < 3) {
+            if (currentPokemon.getEvolutionStageEntry().getPrevious() == null) break;
+            Pokemon previousPokemon = pokemonDao.getPokemon(currentPokemon.getEvolutionStageEntry().getPrevious());
+            currentPokemon = previousPokemon;
+            evolutions.add(currentPokemon);
+            i++;
+        }
+        return evolutions;
     }
 
 }

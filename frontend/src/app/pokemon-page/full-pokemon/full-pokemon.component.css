@@ -1,0 +1,35 @@
+#pokemonPage {
+    background-color: #2e2e2e;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+    border: none;
+    border-radius: 15px;
+}
+
+#pokemonPage > legend {
+    margin: auto;
+}
+
+#pokemonPage > legend > img {
+    width: 350px;
+}
+
+#pokemonPage > h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#pokemonPage > h2 {
+    display: block;
+    border-bottom: 2px dotted white;
+}
+
+.tableDisplay {
+    display: grid;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: auto;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
