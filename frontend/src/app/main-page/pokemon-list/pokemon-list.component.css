@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, 120px);
     grid-template-rows: auto;
-    margin: auto;
+    margin: 15px auto;
     gap: 10px;
 }
 
@@ -45,4 +45,24 @@
     box-sizing: border-box;
     padding: 2px;
     color: black;
+}   
+
+
+.searchInput {
+  width: 40%;
+  display: block;
+  margin: auto;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: box-shadow 0.2s;
+  background-color: #2e2e2e;
+  color: white;
+}
+
+.searchInput:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
 }

@@ -6,6 +6,7 @@ import io.swagger.model.Pokemon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -81,6 +82,13 @@ public class PokemonService {
             i++;
         }
         return evolutions;
+    }
+
+    public List<Pokemon> searchPokemon(String name) {
+        if (StringUtils.hasLength(name)) {
+            return pokemonDao.searchPokemon(name);
+        }
+        return null;
     }
 
 }

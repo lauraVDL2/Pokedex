@@ -10,24 +10,16 @@ import { RequestBuilder } from '../../request-builder';
 
 import { PokemonListResponse } from '../../models/pokemon-list-response';
 
-export interface GetAllPokemon$Params {
-
-/**
- * The number of pokemon to skip before starting to collect the result set
- */
-  offset?: number;
-
-/**
- * The numbers of pokemon to return
- */
-  limit?: number;
+export interface PostPokemonSearch$Params {
+      body?: {
+'name'?: string;
+}
 }
 
-export function getAllPokemon(http: HttpClient, rootUrl: string, params?: GetAllPokemon$Params, context?: HttpContext): Observable<StrictHttpResponse<PokemonListResponse>> {
-  const rb = new RequestBuilder(rootUrl, getAllPokemon.PATH, 'get');
+export function postPokemonSearch(http: HttpClient, rootUrl: string, params?: PostPokemonSearch$Params, context?: HttpContext): Observable<StrictHttpResponse<PokemonListResponse>> {
+  const rb = new RequestBuilder(rootUrl, postPokemonSearch.PATH, 'post');
   if (params) {
-    rb.query('offset', params.offset, {});
-    rb.query('limit', params.limit, {});
+    rb.body(params.body, 'application/json');
   }
 
   return http.request(
@@ -40,4 +32,4 @@ export function getAllPokemon(http: HttpClient, rootUrl: string, params?: GetAll
   );
 }
 
-getAllPokemon.PATH = '/v1/pokedex/pokemon';
+postPokemonSearch.PATH = '/v1/pokedex/pokemon/search';

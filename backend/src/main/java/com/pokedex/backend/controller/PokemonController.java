@@ -1,12 +1,10 @@
 package com.pokedex.backend.controller;
 
+import com.pokedex.backend.exceptionhandler.exceptions.MandatoryDataException;
 import com.pokedex.backend.service.MoveService;
 import com.pokedex.backend.service.PokemonService;
 import io.swagger.api.PokemonApi;
-import io.swagger.model.InlineResponse200;
-import io.swagger.model.InlineResponse204;
-import io.swagger.model.Move;
-import io.swagger.model.Pokemon;
+import io.swagger.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,9 +32,10 @@ public class PokemonController implements PokemonApi {
     }
 
     @Override
-    public ResponseEntity<List<Pokemon>> getAllPokemon(Integer offset, Integer limit) {
+    public ResponseEntity<PokemonListResponse> getAllPokemon(Integer offset, Integer limit) {
         List<Pokemon> pokemonList = pokemonService.getAllPokemon(offset, limit);
-        return new ResponseEntity<>(pokemonList, new HttpHeaders(), HttpStatus.OK);
+        PokemonListResponse response = new PokemonListResponse().pokemonList(pokemonList);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
 
     @Override
@@ -55,5 +54,15 @@ public class PokemonController implements PokemonApi {
     public ResponseEntity<Pokemon> postPokemonCreate(Pokemon body) {
         Pokemon pokemon = pokemonService.createPokemon(body);
         return new ResponseEntity<>(pokemon, new HttpHeaders(), HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<PokemonListResponse> postPokemonSearch(PokemonSearchBody body) {
+        if (body == null) {
+            throw new MandatoryDataException("Body is mandatory");
+        }
+        List<Pokemon> pokemonList = pokemonService.searchPokemon(body.getName());
+        PokemonListResponse response = new PokemonListResponse().pokemonList(pokemonList);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
 }

@@ -9,33 +9,33 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * InlineResponse204
+ * PokemonSearchBody
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-12T19:22:41.448781311+02:00[Europe/Paris]")
 
 
-public class InlineResponse204   {
-  @JsonProperty("message")
-  private String message = null;
+public class PokemonSearchBody   {
+  @JsonProperty("name")
+  private String name = null;
 
-  public InlineResponse204 message(String message) {
-    this.message = message;
+  public PokemonSearchBody name(String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get name
+   * @return name
    **/
-  @Schema(example = "Entry deleted successfully", description = "")
+  @Schema(description = "")
   
-    public String getMessage() {
-    return message;
+    public String getName() {
+    return name;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -47,21 +47,21 @@ public class InlineResponse204   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse204 inlineResponse204 = (InlineResponse204) o;
-    return Objects.equals(this.message, inlineResponse204.message);
+    PokemonSearchBody pokemonSearchBody = (PokemonSearchBody) o;
+    return Objects.equals(this.name, pokemonSearchBody.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message);
+    return Objects.hash(name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse204 {\n");
+    sb.append("class PokemonSearchBody {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

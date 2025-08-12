@@ -4,4 +4,5 @@
 
 export type { Move } from './models/move';
 export type { Pokemon } from './models/pokemon';
+export type { PokemonListResponse } from './models/pokemon-list-response';
 export { PokemonType } from './models/pokemon-type';

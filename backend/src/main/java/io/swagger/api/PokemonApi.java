@@ -8,6 +8,8 @@ package io.swagger.api;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse204;
 import io.swagger.model.Pokemon;
+import io.swagger.model.PokemonListResponse;
+import io.swagger.model.PokemonSearchBody;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -34,7 +36,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-10T20:32:41.534145034+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-12T19:22:41.448781311+02:00[Europe/Paris]")
 @Validated
 public interface PokemonApi {
 
@@ -49,11 +51,11 @@ public interface PokemonApi {
 
     @Operation(summary = "Get all pokemon", description = "Get all pokemon from the db, using a pagination. The default limit of pokemon per page is 50", tags={ "Pokemon" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Pokemon fetched successfully", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pokemon.class)))) })
+        @ApiResponse(responseCode = "200", description = "Pokemon fetched successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PokemonListResponse.class))) })
     @RequestMapping(value = "/v1/pokedex/pokemon",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<Pokemon>> getAllPokemon(@Parameter(in = ParameterIn.QUERY, description = "The number of pokemon to skip before starting to collect the result set" ,schema=@Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset, @Parameter(in = ParameterIn.QUERY, description = "The numbers of pokemon to return" ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit);
+    ResponseEntity<PokemonListResponse> getAllPokemon(@Parameter(in = ParameterIn.QUERY, description = "The number of pokemon to skip before starting to collect the result set" ,schema=@Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset, @Parameter(in = ParameterIn.QUERY, description = "The numbers of pokemon to return" ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit);
 
 
     @Operation(summary = "Get a specific pokemon and its related resources", description = "", tags={ "Pokemon" })
@@ -75,6 +77,16 @@ public interface PokemonApi {
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<Pokemon> postPokemonCreate(@Parameter(in = ParameterIn.DEFAULT, description = "Pokemon object that needs to be added", schema=@Schema()) @Valid @RequestBody Pokemon body);
+
+
+    @Operation(summary = "Create a Pokemon by its name", description = "Search a Pokemon", tags={ "Pokemon" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Pokemon found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PokemonListResponse.class))) })
+    @RequestMapping(value = "/v1/pokedex/pokemon/search",
+        produces = { "application/json" }, 
+        consumes = { "application/json" }, 
+        method = RequestMethod.POST)
+    ResponseEntity<PokemonListResponse> postPokemonSearch(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody PokemonSearchBody body);
 
 }
 

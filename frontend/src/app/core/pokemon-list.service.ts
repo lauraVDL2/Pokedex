@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Pokemon } from '../../apiModels/models';
+import { Pokemon, PokemonListResponse } from '../../apiModels/models';
+import { StrictHttpResponse } from '../../apiModels/strict-http-response';
+import { postPokemonSearch } from '../../apiModels/fn/pokemon/post-pokemon-search';
+import { getAllPokemon } from '../../apiModels/fn/pokemon/get-all-pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +14,12 @@ export class PokemonListService {
 
   constructor(private http: HttpClient) {}
 
-  getAllPokemon(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(this.apiUrl);
+  getPokemonList(): Observable<StrictHttpResponse<PokemonListResponse>> {
+    return getAllPokemon(this.http, 'http://localhost:8080');
+  }
+
+  searchPokemon(name: string): Observable<StrictHttpResponse<PokemonListResponse>> {
+    return postPokemonSearch(this.http, 'http://localhost:8080', { body: { name: name }} );
   }
   
 }

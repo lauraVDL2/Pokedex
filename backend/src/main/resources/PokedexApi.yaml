@@ -28,9 +28,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pokemon'
+                $ref: '#/components/schemas/PokemonListResponse'
     post:
       tags:
         - Pokemon
@@ -104,6 +102,28 @@ paths:
                   message:
                     type: string
                     example: Entry deleted successfully
+  /v1/pokedex/pokemon/search:
+    post:
+      tags:
+        - Pokemon
+      summary: Create a Pokemon by its name
+      description: Search a Pokemon
+      operationId: post-pokemon-search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Pokemon found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PokemonListResponse'
   /v1/pokedex/move:
     post:
       tags:
@@ -129,6 +149,14 @@ paths:
           description: Invalid input
 components:
   schemas:
+    PokemonListResponse:
+      title: 'PokemonListResponse'
+      type: object
+      properties:
+        pokemonList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pokemon'
     Move:
       type: object
       properties:

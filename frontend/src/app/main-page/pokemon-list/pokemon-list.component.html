@@ -1,3 +1,6 @@
+
+<input type="search" [formControl]="searchControl" class="searchInput">
+
 <div id="pokemonList">
     @for (pokemon of pokemonList; track pokemon.entryNumber) {
         <div class="lightPokemon" (click)="goToPokemon(pokemon.entryNumber)">

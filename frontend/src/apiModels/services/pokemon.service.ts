@@ -19,8 +19,11 @@ import { getPokemon } from '../fn/pokemon/get-pokemon';
 import { GetPokemon$Params } from '../fn/pokemon/get-pokemon';
 import { Move } from '../models/move';
 import { Pokemon } from '../models/pokemon';
+import { PokemonListResponse } from '../models/pokemon-list-response';
 import { postPokemonCreate } from '../fn/pokemon/post-pokemon-create';
 import { PostPokemonCreate$Params } from '../fn/pokemon/post-pokemon-create';
+import { postPokemonSearch } from '../fn/pokemon/post-pokemon-search';
+import { PostPokemonSearch$Params } from '../fn/pokemon/post-pokemon-search';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService extends BaseService {
@@ -41,7 +44,7 @@ export class PokemonService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getAllPokemon$Response(params?: GetAllPokemon$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Pokemon>>> {
+  getAllPokemon$Response(params?: GetAllPokemon$Params, context?: HttpContext): Observable<StrictHttpResponse<PokemonListResponse>> {
     return getAllPokemon(this.http, this.rootUrl, params, context);
   }
 
@@ -55,9 +58,9 @@ export class PokemonService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getAllPokemon(params?: GetAllPokemon$Params, context?: HttpContext): Observable<Array<Pokemon>> {
+  getAllPokemon(params?: GetAllPokemon$Params, context?: HttpContext): Observable<PokemonListResponse> {
     return this.getAllPokemon$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<Pokemon>>): Array<Pokemon> => r.body)
+      map((r: StrictHttpResponse<PokemonListResponse>): PokemonListResponse => r.body)
     );
   }
 
@@ -181,6 +184,39 @@ export class PokemonService extends BaseService {
 }>): {
 'message'?: string;
 } => r.body)
+    );
+  }
+
+  /** Path part for operation `postPokemonSearch()` */
+  static readonly PostPokemonSearchPath = '/v1/pokedex/pokemon/search';
+
+  /**
+   * Create a Pokemon by its name.
+   *
+   * Search a Pokemon
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `postPokemonSearch()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  postPokemonSearch$Response(params?: PostPokemonSearch$Params, context?: HttpContext): Observable<StrictHttpResponse<PokemonListResponse>> {
+    return postPokemonSearch(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Create a Pokemon by its name.
+   *
+   * Search a Pokemon
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `postPokemonSearch$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  postPokemonSearch(params?: PostPokemonSearch$Params, context?: HttpContext): Observable<PokemonListResponse> {
+    return this.postPokemonSearch$Response(params, context).pipe(
+      map((r: StrictHttpResponse<PokemonListResponse>): PokemonListResponse => r.body)
     );
   }
 

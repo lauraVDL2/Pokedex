@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Repository
 public class PokemonDao extends AbstractDao<Pokemon> {
@@ -51,6 +52,13 @@ public class PokemonDao extends AbstractDao<Pokemon> {
         Query query = new Query();
         query.addCriteria(Criteria.where("entryNumber").is(entryNumber));
         return mongoTemplate.findOne(query, Pokemon.class, "Pokemon");
+    }
+
+    public List<Pokemon> searchPokemon(String name) {
+        Query query = new Query();
+        String pattern = ".*" + Pattern.quote(name) + ".*";
+        query.addCriteria(Criteria.where("name").regex(pattern, "i"));
+        return mongoTemplate.find(query, Pokemon.class, "Pokemon");
     }
 
 }
