@@ -91,4 +91,8 @@ public class PokemonService {
         return null;
     }
 
+    public Long getPokemonCount() {
+        return this.pokemonDao.getPokemonCount();
+    }
+
 }

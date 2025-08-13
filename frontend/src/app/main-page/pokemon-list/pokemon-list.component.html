@@ -18,3 +18,5 @@
         No Pokemon found !
     }
 </div>
+
+<mat-paginator [length]="totalItems" [pageSize]="limit" [pageIndex]="offset-1" (page)="pageChanged($event)"></mat-paginator>

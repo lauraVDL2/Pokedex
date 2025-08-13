@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -64,5 +65,11 @@ public class PokemonController implements PokemonApi {
         List<Pokemon> pokemonList = pokemonService.searchPokemon(body.getName());
         PokemonListResponse response = new PokemonListResponse().pokemonList(pokemonList);
         return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    // No need of swagger here
+    @GetMapping("/api/pokemon/count")
+    public Long getPokemonCount() {
+        return pokemonService.getPokemonCount();
     }
 }

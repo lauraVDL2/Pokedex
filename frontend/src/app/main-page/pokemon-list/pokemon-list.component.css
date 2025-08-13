@@ -66,3 +66,8 @@
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   border-color: #007bff;
 }
+
+.mat-mdc-paginator-container {
+    background-color: #2e2e2e;
+    color: white;
+}

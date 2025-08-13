@@ -61,4 +61,8 @@ public class PokemonDao extends AbstractDao<Pokemon> {
         return mongoTemplate.find(query, Pokemon.class, "Pokemon");
     }
 
+    public Long getPokemonCount() {
+        return mongoTemplate.count(new Query(), Pokemon.class, "Pokemon");
+    }
+
 }
