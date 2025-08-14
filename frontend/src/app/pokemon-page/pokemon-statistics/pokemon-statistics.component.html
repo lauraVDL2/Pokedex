@@ -1,0 +1,52 @@
+<h2>Base statistics</h2>
+
+<div id="pokemonStatistics">
+    <div>
+        <span>hp : {{ pokemon.baseStatistics?.hp }}</span>
+        <div class="statContainer">
+            <div class="progressBar">
+                <div [style.width]="getWidth(pokemon.baseStatistics?.hp)" [style.background]="backgroundColor" class="progressContent"></div>
+            </div>
+        </div>
+  </div>
+    <div>
+        <span>Attack : {{ pokemon.baseStatistics?.attack }}</span>
+        <div class="statContainer">
+            <div class="progressBar">
+                <div [style.width]="getWidth(pokemon.baseStatistics?.attack)" [style.background]="backgroundColor" class="progressContent"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <span>Defense : {{ pokemon.baseStatistics?.defense }}</span>
+        <div class="statContainer">
+            <div class="progressBar">
+                <div [style.width]="getWidth(pokemon.baseStatistics?.defense)" [style.background]="backgroundColor" class="progressContent"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <span>Special attack : {{ pokemon.baseStatistics?.specialAttack }}</span>
+        <div class="statContainer">
+            <div class="progressBar">
+                <div [style.width]="getWidth(pokemon.baseStatistics?.specialAttack)" [style.background]="backgroundColor" class="progressContent"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <span>Special defense : {{ pokemon.baseStatistics?.specialDefense }}</span>
+        <div class="statContainer">
+            <div class="progressBar">
+                <div [style.width]="getWidth(pokemon.baseStatistics?.specialDefense)" [style.background]="backgroundColor" class="progressContent"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <span>Speed : {{ pokemon.baseStatistics?.speed }}</span>
+        <div class="statContainer">
+            <div class="progressBar">
+                <div [style.width]="getWidth(pokemon.baseStatistics?.speed)" [style.background]="backgroundColor" class="progressContent"></div>
+            </div>
+        </div>
+    </div>
+</div>

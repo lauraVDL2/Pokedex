@@ -1,0 +1,43 @@
+#backPokedex {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    box-sizing: border-box;
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#pokemonPage {
+    background-color: #2e2e2e;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+    border: none;
+    border-radius: 15px;
+}
+
+#pokemonPage > legend {
+    margin: auto;
+}
+
+#pokemonPage > legend > img {
+    width: 350px;
+}
+
+#pokemonPage > h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.tableDisplay {
+    display: grid;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: auto;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}

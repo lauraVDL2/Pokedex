@@ -1,0 +1,41 @@
+<div id="backPokedex" (click)="goHome()">Back to Pokedex</div>
+
+<fieldset id="pokemonPage">
+    <legend>
+        <img [src]="pokemon?.sprite?.frontDefaultBig">
+    </legend>
+    <h1>N#{{ pokemon?.entryNumber }} - {{ pokemon?.name }}</h1>
+
+    <h2>Information</h2>
+    <div class="tableDisplay">
+        <div>
+            <div><strong>Height :</strong> {{ pokemon?.height }}</div>
+            <div><strong>Weight :</strong> {{ pokemon?.weight }}</div>
+            <div><strong>Type :</strong> {{ pokemon?.types?.at(0) }} {{ pokemon?.types?.at(1) }}</div>
+        </div>
+        <div>
+            <div><strong>First ability :</strong> {{ pokemon?.ability?.first }}</div>
+            @if (pokemon?.ability?.second) {
+                <div><strong>Second ability :</strong> {{ pokemon?.ability?.second }}</div>
+            }
+            @if (pokemon?.ability?.hidden) {
+                <div><strong>Hidden ability :</strong> {{ pokemon?.ability?.hidden }}</div>
+            }
+        </div>
+    </div>
+
+    <h2>Description</h2>
+    <div>{{ pokemon?.description }}</div>
+
+    @if (pokemon?.evolutionStageEntry) {
+        <app-evolution-chart (pageChange)="onPageChange($event)" [currentPokemon]="pokemon!" [evolutions]="evolutions!"></app-evolution-chart>
+    }
+
+    @if (pokemon?.baseStatistics) {
+        <app-pokemon-statistics [pokemon]="pokemon!"></app-pokemon-statistics>
+    }
+
+    @if (pokemon?.moves) {
+        <app-moveset [pokemon]="pokemon!"></app-moveset>
+    }
+</fieldset>

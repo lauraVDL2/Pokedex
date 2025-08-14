@@ -1,0 +1,23 @@
+<h1>Pokedex</h1>
+
+<input type="search" [formControl]="searchControl" class="searchInput">
+
+<div id="pokemonList">
+    @for (pokemon of pokemonList; track pokemon.entryNumber) {
+        <div class="lightPokemon" (click)="goToPokemon(pokemon.entryNumber)">
+            <span>N#{{ pokemon.entryNumber }}</span>
+            <img [src]="pokemon?.sprite?.frontDefaultSmall"/>
+            <h2>{{ pokemon.name }}</h2>
+            <div class="types">
+                <div [style.backgroundColor]="pokemon?.types?.at(0) | pokemonType">{{ pokemon?.types?.at(0) }}</div>
+                @if(pokemon?.types?.at(1)) {
+                    <div [style.backgroundColor]="pokemon?.types?.at(1) | pokemonType">{{ pokemon?.types?.at(1) }}</div>
+                }
+            </div>
+        </div>
+    } @empty {
+        No Pokemon found !
+    }
+</div>
+
+<mat-paginator [length]="totalItems" [pageSize]="limit" [pageIndex]="offset-1" (page)="pageChanged($event)"></mat-paginator>
