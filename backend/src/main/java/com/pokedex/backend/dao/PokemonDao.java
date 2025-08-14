@@ -65,4 +65,10 @@ public class PokemonDao extends AbstractDao<Pokemon> {
         return mongoTemplate.count(new Query(), Pokemon.class, "Pokemon");
     }
 
+    public Pokemon modifyPokemon(Integer entryNumber, Pokemon pokemon) {
+        Query query = new Query(Criteria.where("entryNumber").is(entryNumber));
+        mongoTemplate.remove(query, Pokemon.class, "Pokemon");
+        return mongoTemplate.insert(pokemon, "Pokemon");
+    }
+
 }

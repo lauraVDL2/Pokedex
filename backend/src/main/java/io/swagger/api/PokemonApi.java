@@ -9,7 +9,9 @@ import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse204;
 import io.swagger.model.Pokemon;
 import io.swagger.model.PokemonListResponse;
+import io.swagger.model.PokemonResponse;
 import io.swagger.model.PokemonSearchBody;
+import io.swagger.model.PutPokemonBody;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -36,7 +38,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T18:27:36.393621428+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T20:34:58.722562253+02:00[Europe/Paris]")
 @Validated
 public interface PokemonApi {
 
@@ -64,7 +66,7 @@ public interface PokemonApi {
     @RequestMapping(value = "/v1/pokedex/pokemon/{entryNumber}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<InlineResponse200> getPokemon(@Parameter(in = ParameterIn.PATH, description = "Entry number of the Pokemon to delete", required=true, schema=@Schema()) @PathVariable("entryNumber") Integer entryNumber);
+    ResponseEntity<InlineResponse200> getPokemon(@Parameter(in = ParameterIn.PATH, description = "Entry number of the Pokemon to get", required=true, schema=@Schema()) @PathVariable("entryNumber") Integer entryNumber);
 
 
     @Operation(summary = "Create a new pokemon", description = "Add a new pokemon to the db.", tags={ "Pokemon" })
@@ -87,6 +89,16 @@ public interface PokemonApi {
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<PokemonListResponse> postPokemonSearch(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody PokemonSearchBody body);
+
+
+    @Operation(summary = "Get a specific pokemon and its related resources", description = "", tags={ "Pokemon" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Pokemon modified", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PokemonResponse.class))) })
+    @RequestMapping(value = "/v1/pokedex/pokemon/{entryNumber}",
+        produces = { "application/json" }, 
+        consumes = { "application/json" }, 
+        method = RequestMethod.PUT)
+    ResponseEntity<PokemonResponse> putPokemon(@Parameter(in = ParameterIn.PATH, description = "Entry number of the Pokemon to get", required=true, schema=@Schema()) @PathVariable("entryNumber") Integer entryNumber, @Parameter(in = ParameterIn.DEFAULT, description = "Pokemon object that needs to be modified", schema=@Schema()) @Valid @RequestBody PutPokemonBody body);
 
 }
 

@@ -3,6 +3,7 @@ package com.pokedex.backend.exceptionhandler;
 import com.mongodb.DuplicateKeyException;
 import com.mongodb.MongoWriteException;
 import com.pokedex.backend.exceptionhandler.exceptions.MandatoryDataException;
+import com.pokedex.backend.exceptionhandler.exceptions.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,6 +28,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Error> handleMandatoryDataException(MandatoryDataException ex) {
         Error error = new Error("Mandatory data missing", ex.getMessage(), 400);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<Error> handleUnauthorizedException(UnauthorizedException ex) {
+        Error error = new Error("Cannot perform this operation", ex.getMessage(), 400);
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
     }
 
 }

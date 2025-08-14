@@ -1,3 +1,10 @@
+h1 {
+    display: block;
+    margin: 30px auto;
+    font-size: 4rem;
+    text-align: center;
+}
+
 #pokemonList {
     display: grid;
     grid-template-columns: repeat(auto-fit, 120px);
@@ -51,7 +58,7 @@
 .searchInput {
   width: 40%;
   display: block;
-  margin: auto;
+  margin: 30px auto;
   padding: 8px 12px;
   font-size: 16px;
   border: 1px solid #ccc;

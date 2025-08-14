@@ -35,6 +35,10 @@ export class FullPokemonComponent implements OnInit {
     });
   }
 
+  goHome(): void {
+    this.router.navigate(['/']);
+  }
+
   onPageChange(entryNumber: number): void {
     this.entryNumber = entryNumber;
     this.router.navigate(['/pokemon', entryNumber]);
@@ -54,8 +58,6 @@ export class FullPokemonComponent implements OnInit {
         const firstColor = this.pokemonTypePipe.transform(this.pokemon?.types?.at(0));
         if (this.pokemon?.types?.at(1)) {
           const secondColor = this.pokemonTypePipe.transform(this.pokemon?.types?.at(1));
-          console.log(secondColor);
-          console.log(firstColor);
           document.body.style.background = `linear-gradient(to right, ${firstColor}, ${secondColor})`;
         }
         else {

@@ -1,3 +1,16 @@
+#backPokedex {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    box-sizing: border-box;
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 #pokemonPage {
     background-color: #2e2e2e;
     width: 100%;

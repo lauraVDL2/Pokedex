@@ -1,0 +1,405 @@
+{
+  "name": "PokedexApis",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "demo",
+      "filename": "demo",
+      "seq": 4,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "demo",
+          "seq": 4
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Create Ivysaur",
+          "filename": "Create Ivysaur.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/pokedex/pokemon",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"entryNumber\": 2,\n  \"name\": \"Ivysaur\",\n  \"types\": [\n    \"Grass\",\n    \"Poison\"\n  ]\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "pokedex",
+      "filename": "pokedex",
+      "seq": 2,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "pokedex",
+          "seq": 2
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Create Pokemon",
+          "filename": "Create Pokemon.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/pokemon",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"entryNumber\": 4,\n  \"name\": \"Test\",\n  \"types\": [\n    \"Grass\",\n    \"Poison\"\n  ]\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Delete Pokemon",
+          "filename": "Delete Pokemon.bru",
+          "seq": 2,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/pokemon/2",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Delete move",
+          "filename": "Delete move.bru",
+          "seq": 10,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/move/Tackle",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Get Move",
+          "filename": "Get Move.bru",
+          "seq": 8,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/move/Tackle",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Get all Pokemon",
+          "filename": "Get all Pokemon.bru",
+          "seq": 3,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/pokemon?offset=1&limit=50",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "offset",
+                "value": "1",
+                "type": "query",
+                "enabled": true
+              },
+              {
+                "name": "limit",
+                "value": "50",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Get one pokemon",
+          "filename": "Get one pokemon.bru",
+          "seq": 4,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/pokemon/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Modify Move",
+          "filename": "Modify Move.bru",
+          "seq": 9,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/move/Tackle",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"move\": {\n    \"name\": \"Tackle\",\n    \"description\": \"Tackle is one of the most common and basic moves a Pokémon learns. It deals damage with no additional effectsR.\",\n    \"type\": \"Normal\",\n    \"power\": 40,\n    \"accuracy\": 100,\n    \"pp\": 35,\n    \"category\": \"PHYSICAL\"\n  }\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Modify Pokemon",
+          "filename": "Modify Pokemon.bru",
+          "seq": 5,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/pokemon/2",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"pokemon\":{\n    \"entryNumber\": 2,\n    \"name\": \"Ivysaur\",\n    \"types\": [\n      \"GRASS\",\n      \"POISON\"\n    ],\n    \"description\": \"When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloomt.\",\n    \"height\": \"1.0 m\",\n    \"weight\": \"13.0 kg\",\n    \"ability\": {\n      \"first\": \"Overgrow\",\n      \"hidden\": \"Chlorophyll\"\n    },\n    \"baseStatistics\": {\n      \"hp\": 60,\n      \"attack\": 62,\n      \"defense\": 63,\n      \"specialAttack\": 80,\n      \"specialDefense\": 80,\n      \"speed\": 60\n    },\n    \"sprite\": {\n      \"frontDefaultSmall\": \"https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/ivysaur.png\",\n      \"frontDefaultMedium\": \"https://img.pokemondb.net/sprites/home/normal/1x/ivysaur.png\",\n      \"frontDefaultBig\": \"https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png\"\n    },\n    \"moves\": [\n      \"Tackle\",\n      \"Vine Whip\"\n    ],\n    \"evolutionStageEntry\": {\n      \"previous\": 1,\n      \"next\": [3]\n    },\n    \"wayToEvolvedStage\": \"Level 16\"\n  }\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Search Pokemon",
+          "filename": "Search Pokemon.bru",
+          "seq": 6,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/pokemon/search",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\": \"Ivy\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Search moves",
+          "filename": "Search moves.bru",
+          "seq": 7,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/v1/pokedex/move/search",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"names\": [\"Tackle\"]\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "PokedexApis",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0036745071411132812,
+    "filesCount": 14
+  }
+}

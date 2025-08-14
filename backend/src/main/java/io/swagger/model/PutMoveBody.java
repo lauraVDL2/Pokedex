@@ -3,50 +3,41 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.Move;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * MoveSearchBody
+ * PutMoveBody
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T20:34:58.722562253+02:00[Europe/Paris]")
 
 
-public class MoveSearchBody   {
-  @JsonProperty("names")
-  @Valid
-  private List<String> names = null;
+public class PutMoveBody   {
+  @JsonProperty("move")
+  private Move move = null;
 
-  public MoveSearchBody names(List<String> names) {
-    this.names = names;
-    return this;
-  }
-
-  public MoveSearchBody addNamesItem(String namesItem) {
-    if (this.names == null) {
-      this.names = new ArrayList<String>();
-    }
-    this.names.add(namesItem);
+  public PutMoveBody move(Move move) {
+    this.move = move;
     return this;
   }
 
   /**
-   * Get names
-   * @return names
+   * Get move
+   * @return move
    **/
   @Schema(description = "")
   
-    public List<String> getNames() {
-    return names;
+    @Valid
+    public Move getMove() {
+    return move;
   }
 
-  public void setNames(List<String> names) {
-    this.names = names;
+  public void setMove(Move move) {
+    this.move = move;
   }
 
 
@@ -58,21 +49,21 @@ public class MoveSearchBody   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MoveSearchBody moveSearchBody = (MoveSearchBody) o;
-    return Objects.equals(this.names, moveSearchBody.names);
+    PutMoveBody putMoveBody = (PutMoveBody) o;
+    return Objects.equals(this.move, putMoveBody.move);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(names);
+    return Objects.hash(move);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MoveSearchBody {\n");
+    sb.append("class PutMoveBody {\n");
     
-    sb.append("    names: ").append(toIndentedString(names)).append("\n");
+    sb.append("    move: ").append(toIndentedString(move)).append("\n");
     sb.append("}");
     return sb.toString();
   }

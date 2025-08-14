@@ -14,7 +14,6 @@ export class MovesetService {
   constructor(private http: HttpClient) {}
 
   searchMoves(moveNames: string[] | undefined): Observable<StrictHttpResponse<MoveListResponse>> {
-    console.log(moveNames);
     return postMoveSearch(this.http, this.rootUrl, { body: { names: moveNames } })
   }
   

@@ -3,50 +3,41 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.Pokemon;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * MoveSearchBody
+ * PokemonResponse
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T20:34:58.722562253+02:00[Europe/Paris]")
 
 
-public class MoveSearchBody   {
-  @JsonProperty("names")
-  @Valid
-  private List<String> names = null;
+public class PokemonResponse   {
+  @JsonProperty("pokemon")
+  private Pokemon pokemon = null;
 
-  public MoveSearchBody names(List<String> names) {
-    this.names = names;
-    return this;
-  }
-
-  public MoveSearchBody addNamesItem(String namesItem) {
-    if (this.names == null) {
-      this.names = new ArrayList<String>();
-    }
-    this.names.add(namesItem);
+  public PokemonResponse pokemon(Pokemon pokemon) {
+    this.pokemon = pokemon;
     return this;
   }
 
   /**
-   * Get names
-   * @return names
+   * Get pokemon
+   * @return pokemon
    **/
   @Schema(description = "")
   
-    public List<String> getNames() {
-    return names;
+    @Valid
+    public Pokemon getPokemon() {
+    return pokemon;
   }
 
-  public void setNames(List<String> names) {
-    this.names = names;
+  public void setPokemon(Pokemon pokemon) {
+    this.pokemon = pokemon;
   }
 
 
@@ -58,21 +49,21 @@ public class MoveSearchBody   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MoveSearchBody moveSearchBody = (MoveSearchBody) o;
-    return Objects.equals(this.names, moveSearchBody.names);
+    PokemonResponse pokemonResponse = (PokemonResponse) o;
+    return Objects.equals(this.pokemon, pokemonResponse.pokemon);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(names);
+    return Objects.hash(pokemon);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MoveSearchBody {\n");
+    sb.append("class PokemonResponse {\n");
     
-    sb.append("    names: ").append(toIndentedString(names)).append("\n");
+    sb.append("    pokemon: ").append(toIndentedString(pokemon)).append("\n");
     sb.append("}");
     return sb.toString();
   }

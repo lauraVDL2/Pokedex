@@ -51,6 +51,35 @@ paths:
         '400':
           description: Invalid input
   /v1/pokedex/pokemon/{entryNumber}:
+    put:
+      tags:
+        - Pokemon
+      summary: Get a specific pokemon and its related resources
+      operationId: put-pokemon
+      parameters:
+        - name: entryNumber
+          in: path
+          required: true
+          description: Entry number of the Pokemon to get
+          schema:
+            type: integer
+      requestBody:
+        description: Pokemon object that needs to be modified
+        content:
+          application/json:
+            schema:
+              type: object
+              title: 'PutPokemonBody'
+              properties:
+                pokemon:
+                  $ref: '#/components/schemas/Pokemon'
+      responses:
+        '200':
+          description: Pokemon modified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PokemonResponse'
     get:
       tags:
         - Pokemon
@@ -60,7 +89,7 @@ paths:
         - name: entryNumber
           in: path
           required: true
-          description: Entry number of the Pokemon to delete
+          description: Entry number of the Pokemon to get
           schema:
             type: integer
       responses:
@@ -124,6 +153,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PokemonListResponse'
+  /v1/pokedex/move/{name}:
+    put:
+      tags:
+        - Move
+      summary: Modify a specific move
+      operationId: put-move
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Name of the move
+          schema:
+            type: string
+      requestBody:
+        description: Pokemon object that needs to be modified
+        content:
+          application/json:
+            schema:
+              type: object
+              title: 'PutMoveBody'
+              properties:
+                move:
+                  $ref: '#/components/schemas/Move'
+      responses:
+        '200':
+          description: Pokemon modified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveResponse'
+    get:
+      tags:
+        - Move
+      summary: Get a specific move
+      operationId: get-move
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Name of the move to get
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveResponse'
+    delete:
+      tags:
+        - move
+      summary: Delete a move knowing its name
+      operationId: delete-move
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: name of the Pokemon to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+                title: 'DeleteMoveResponse'
+                properties:
+                  message:
+                    type: string
   /v1/pokedex/move:
     post:
       tags:
@@ -200,6 +299,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Pokemon'
+    PokemonResponse:
+      title: 'PokemonResponse'
+      type: object
+      properties:
+        pokemon:
+          $ref: '#/components/schemas/Pokemon'
     Move:
       type: object
       properties:

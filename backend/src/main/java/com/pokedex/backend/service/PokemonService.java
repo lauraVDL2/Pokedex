@@ -2,6 +2,7 @@ package com.pokedex.backend.service;
 
 import com.mongodb.client.result.DeleteResult;
 import com.pokedex.backend.dao.PokemonDao;
+import com.pokedex.backend.exceptionhandler.exceptions.UnauthorizedException;
 import io.swagger.model.Pokemon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,6 +94,13 @@ public class PokemonService {
 
     public Long getPokemonCount() {
         return this.pokemonDao.getPokemonCount();
+    }
+
+    public Pokemon modifyPokemon(Integer entryNumber, Pokemon pokemon) throws UnauthorizedException {
+        if (entryNumber != pokemon.getEntryNumber()) {
+            throw new UnauthorizedException("Cannot change entryNumber");
+        }
+        return pokemonDao.modifyPokemon(entryNumber, pokemon);
     }
 
 }

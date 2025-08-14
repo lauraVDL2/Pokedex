@@ -5,10 +5,12 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.DeleteMoveResponse;
 import io.swagger.model.MoveListResponse;
 import io.swagger.model.MoveResponse;
 import io.swagger.model.MoveSearchBody;
 import io.swagger.model.PokedexMoveBody;
+import io.swagger.model.PutMoveBody;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -35,9 +37,27 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T18:27:36.393621428+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T20:34:58.722562253+02:00[Europe/Paris]")
 @Validated
 public interface MoveApi {
+
+    @Operation(summary = "Delete a move knowing its name", description = "", tags={ "move" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "204", description = "", content = @Content(mediaType = "application/json", schema = @Schema(implementation = DeleteMoveResponse.class))) })
+    @RequestMapping(value = "/v1/pokedex/move/{name}",
+        produces = { "application/json" }, 
+        method = RequestMethod.DELETE)
+    ResponseEntity<DeleteMoveResponse> deleteMove(@Parameter(in = ParameterIn.PATH, description = "name of the Pokemon to delete", required=true, schema=@Schema()) @PathVariable("name") String name);
+
+
+    @Operation(summary = "Get a specific move", description = "", tags={ "Move" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MoveResponse.class))) })
+    @RequestMapping(value = "/v1/pokedex/move/{name}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<MoveResponse> getMove(@Parameter(in = ParameterIn.PATH, description = "Name of the move to get", required=true, schema=@Schema()) @PathVariable("name") String name);
+
 
     @Operation(summary = "Create a new move", description = "Add a new move to the db.", tags={ "Move" })
     @ApiResponses(value = { 
@@ -61,6 +81,16 @@ public interface MoveApi {
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<MoveListResponse> postMoveSearch(@Parameter(in = ParameterIn.DEFAULT, description = "String containing the names", schema=@Schema()) @Valid @RequestBody MoveSearchBody body);
+
+
+    @Operation(summary = "Modify a specific move", description = "", tags={ "Move" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Pokemon modified", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MoveResponse.class))) })
+    @RequestMapping(value = "/v1/pokedex/move/{name}",
+        produces = { "application/json" }, 
+        consumes = { "application/json" }, 
+        method = RequestMethod.PUT)
+    ResponseEntity<MoveResponse> putMove(@Parameter(in = ParameterIn.PATH, description = "Name of the move", required=true, schema=@Schema()) @PathVariable("name") String name, @Parameter(in = ParameterIn.DEFAULT, description = "Pokemon object that needs to be modified", schema=@Schema()) @Valid @RequestBody PutMoveBody body);
 
 }
 

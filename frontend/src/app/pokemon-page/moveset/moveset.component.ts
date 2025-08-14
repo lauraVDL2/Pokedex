@@ -22,8 +22,6 @@ export class MovesetComponent implements OnInit, OnChanges {
   displayMoves(): void {
     this.movesetService.searchMoves(this.pokemon?.moves).subscribe(data => {
       this.moves = data.body.moveList;
-      console.log(this.pokemon?.moves);
-      console.log(data.body.moveList);
       this.cdr.detectChanges();
     });
   }

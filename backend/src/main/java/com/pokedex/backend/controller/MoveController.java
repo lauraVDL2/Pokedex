@@ -19,6 +19,20 @@ public class MoveController implements MoveApi {
     MoveService moveService;
 
     @Override
+    public ResponseEntity<DeleteMoveResponse> deleteMove(String name) {
+        String message = moveService.deleteMove(name);
+        DeleteMoveResponse response = new DeleteMoveResponse().message(message);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.NO_CONTENT);
+    }
+
+    @Override
+    public ResponseEntity<MoveResponse> getMove(String name) {
+        Move move = moveService.getMove(name);
+        MoveResponse response = new MoveResponse().move(move);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<MoveResponse> postMoveCreate(PokedexMoveBody body) {
         Move move = moveService.createMove(body.getMove());
         MoveResponse response = new MoveResponse().move(move);
@@ -29,6 +43,13 @@ public class MoveController implements MoveApi {
     public ResponseEntity<MoveListResponse> postMoveSearch(MoveSearchBody body) {
         List<Move> moves = moveService.searchMoves(body.getNames());
         MoveListResponse response = new MoveListResponse().moveList(moves);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<MoveResponse> putMove(String name, PutMoveBody body) {
+        Move move = moveService.modifyMove(name, body.getMove());
+        MoveResponse response = new MoveResponse().move(move);
         return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
 }

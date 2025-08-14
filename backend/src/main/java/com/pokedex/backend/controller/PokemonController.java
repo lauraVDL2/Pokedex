@@ -1,6 +1,7 @@
 package com.pokedex.backend.controller;
 
 import com.pokedex.backend.exceptionhandler.exceptions.MandatoryDataException;
+import com.pokedex.backend.exceptionhandler.exceptions.UnauthorizedException;
 import com.pokedex.backend.service.MoveService;
 import com.pokedex.backend.service.PokemonService;
 import io.swagger.api.PokemonApi;
@@ -64,6 +65,13 @@ public class PokemonController implements PokemonApi {
         }
         List<Pokemon> pokemonList = pokemonService.searchPokemon(body.getName());
         PokemonListResponse response = new PokemonListResponse().pokemonList(pokemonList);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<PokemonResponse> putPokemon(Integer entryNumber, PutPokemonBody body) {
+        Pokemon pokemon = pokemonService.modifyPokemon(entryNumber, body.getPokemon());
+        PokemonResponse response = new PokemonResponse().pokemon(pokemon);
         return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
 

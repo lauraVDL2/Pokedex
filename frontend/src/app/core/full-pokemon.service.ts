@@ -16,7 +16,6 @@ export class FullPokemonService {
   'moves'?: Array<Move>;
   'evolutions'?: Array<Pokemon>;
 }> {
-    console.log(`http://localhost:8080/v1/pokedex/pokemon/${entryNumber}`);
     return this.http.get<{
   'pokemon'?: Pokemon;
   'moves'?: Array<Move>;
