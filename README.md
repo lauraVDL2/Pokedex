@@ -7,7 +7,7 @@ Backend is using Spring Boot (with MongoDB database), frontend is using Angular.
 2. If not done, install [docker and docker compose](https://docs.docker.com/compose/install/)
 3. Go to the root of the repository and run from your terminal <strong>./lifecycle.sh build</strong>
 4. Wait for the script to run, it will automatically create a few Pokemon and start your environment
-5. Go to http://localhost/4200
+5. Go to http://localhost:4200
 6. Once you are done, you can run <strong>./lifecycle.sh purge</strong>
 
 # Overview
