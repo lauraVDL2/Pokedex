@@ -4,38 +4,49 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * InlineResponse204
+ * MoveSearchBody
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T18:27:36.393621428+02:00[Europe/Paris]")
 
 
-public class InlineResponse204   {
-  @JsonProperty("message")
-  private String message = null;
+public class MoveSearchBody   {
+  @JsonProperty("names")
+  @Valid
+  private List<String> names = null;
 
-  public InlineResponse204 message(String message) {
-    this.message = message;
+  public MoveSearchBody names(List<String> names) {
+    this.names = names;
+    return this;
+  }
+
+  public MoveSearchBody addNamesItem(String namesItem) {
+    if (this.names == null) {
+      this.names = new ArrayList<String>();
+    }
+    this.names.add(namesItem);
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get names
+   * @return names
    **/
-  @Schema(example = "Entry deleted successfully", description = "")
+  @Schema(description = "")
   
-    public String getMessage() {
-    return message;
+    public List<String> getNames() {
+    return names;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setNames(List<String> names) {
+    this.names = names;
   }
 
 
@@ -47,21 +58,21 @@ public class InlineResponse204   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse204 inlineResponse204 = (InlineResponse204) o;
-    return Objects.equals(this.message, inlineResponse204.message);
+    MoveSearchBody moveSearchBody = (MoveSearchBody) o;
+    return Objects.equals(this.names, moveSearchBody.names);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message);
+    return Objects.hash(names);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse204 {\n");
+    sb.append("class MoveSearchBody {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    names: ").append(toIndentedString(names)).append("\n");
     sb.append("}");
     return sb.toString();
   }

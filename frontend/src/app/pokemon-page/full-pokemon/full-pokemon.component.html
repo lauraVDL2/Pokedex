@@ -32,4 +32,8 @@
     @if (pokemon?.baseStatistics) {
         <app-pokemon-statistics [pokemon]="pokemon!"></app-pokemon-statistics>
     }
+
+    @if (pokemon?.moves) {
+        <app-moveset [pokemon]="pokemon!"></app-moveset>
+    }
 </fieldset>

@@ -1,0 +1,17 @@
+#gridMoves {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.firstRow {
+    font-weight: bold;
+}
+
+.moveType {
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    color: black;
+}

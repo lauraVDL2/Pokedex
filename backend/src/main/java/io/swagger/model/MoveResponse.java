@@ -3,39 +3,41 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.Move;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * InlineResponse204
+ * MoveResponse
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T18:27:36.393621428+02:00[Europe/Paris]")
 
 
-public class InlineResponse204   {
-  @JsonProperty("message")
-  private String message = null;
+public class MoveResponse   {
+  @JsonProperty("move")
+  private Move move = null;
 
-  public InlineResponse204 message(String message) {
-    this.message = message;
+  public MoveResponse move(Move move) {
+    this.move = move;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get move
+   * @return move
    **/
-  @Schema(example = "Entry deleted successfully", description = "")
+  @Schema(description = "")
   
-    public String getMessage() {
-    return message;
+    @Valid
+    public Move getMove() {
+    return move;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setMove(Move move) {
+    this.move = move;
   }
 
 
@@ -47,21 +49,21 @@ public class InlineResponse204   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse204 inlineResponse204 = (InlineResponse204) o;
-    return Objects.equals(this.message, inlineResponse204.message);
+    MoveResponse moveResponse = (MoveResponse) o;
+    return Objects.equals(this.move, moveResponse.move);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message);
+    return Objects.hash(move);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse204 {\n");
+    sb.append("class MoveResponse {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    move: ").append(toIndentedString(move)).append("\n");
     sb.append("}");
     return sb.toString();
   }

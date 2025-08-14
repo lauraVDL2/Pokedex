@@ -3,5 +3,11 @@ body {
     background: #4B4B4B;
     color: white;
 }
+
+h2 {
+    display: block;
+    border-bottom: 2px dotted white;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

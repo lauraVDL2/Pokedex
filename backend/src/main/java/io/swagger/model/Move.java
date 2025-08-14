@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Move
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-12T19:22:41.448781311+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T18:27:36.393621428+02:00[Europe/Paris]")
 
 
 public class Move   {
@@ -26,9 +26,6 @@ public class Move   {
 
   @JsonProperty("type")
   private PokemonType type = null;
-
-  @JsonProperty("wayToLearn")
-  private String wayToLearn = null;
 
   @JsonProperty("power")
   private Integer power = null;
@@ -132,25 +129,6 @@ public class Move   {
     this.type = type;
   }
 
-  public Move wayToLearn(String wayToLearn) {
-    this.wayToLearn = wayToLearn;
-    return this;
-  }
-
-  /**
-   * Get wayToLearn
-   * @return wayToLearn
-   **/
-  @Schema(description = "")
-  
-    public String getWayToLearn() {
-    return wayToLearn;
-  }
-
-  public void setWayToLearn(String wayToLearn) {
-    this.wayToLearn = wayToLearn;
-  }
-
   public Move power(Integer power) {
     this.power = power;
     return this;
@@ -240,7 +218,6 @@ public class Move   {
     return Objects.equals(this.name, move.name) &&
         Objects.equals(this.description, move.description) &&
         Objects.equals(this.type, move.type) &&
-        Objects.equals(this.wayToLearn, move.wayToLearn) &&
         Objects.equals(this.power, move.power) &&
         Objects.equals(this.accuracy, move.accuracy) &&
         Objects.equals(this.pp, move.pp) &&
@@ -249,7 +226,7 @@ public class Move   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, type, wayToLearn, power, accuracy, pp, category);
+    return Objects.hash(name, description, type, power, accuracy, pp, category);
   }
 
   @Override
@@ -260,7 +237,6 @@ public class Move   {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    wayToLearn: ").append(toIndentedString(wayToLearn)).append("\n");
     sb.append("    power: ").append(toIndentedString(power)).append("\n");
     sb.append("    accuracy: ").append(toIndentedString(accuracy)).append("\n");
     sb.append("    pp: ").append(toIndentedString(pp)).append("\n");

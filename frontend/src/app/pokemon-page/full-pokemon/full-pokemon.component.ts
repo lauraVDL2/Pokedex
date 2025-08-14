@@ -6,10 +6,11 @@ import { StrictHttpResponse } from '../../../apiModels/strict-http-response';
 import { PokemonTypePipe } from '../../common/pokemon-type.pipe';
 import { EvolutionChartComponent } from '../evolution-chart/evolution-chart.component';
 import { PokemonStatisticsComponent } from '../pokemon-statistics/pokemon-statistics.component';
+import { MovesetComponent } from '../moveset/moveset.component';
 
 @Component({
   selector: 'app-full-pokemon',
-  imports: [EvolutionChartComponent, PokemonStatisticsComponent],
+  imports: [EvolutionChartComponent, PokemonStatisticsComponent, MovesetComponent],
   standalone: true,
   templateUrl: './full-pokemon.component.html',
   styleUrl: './full-pokemon.component.css',

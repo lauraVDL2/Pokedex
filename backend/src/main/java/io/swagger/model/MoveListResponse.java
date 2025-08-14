@@ -3,39 +3,51 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.Move;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * InlineResponse204
+ * MoveListResponse
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-08-14T18:27:36.393621428+02:00[Europe/Paris]")
 
 
-public class InlineResponse204   {
-  @JsonProperty("message")
-  private String message = null;
+public class MoveListResponse   {
+  @JsonProperty("moveList")
+  @Valid
+  private List<Move> moveList = null;
 
-  public InlineResponse204 message(String message) {
-    this.message = message;
+  public MoveListResponse moveList(List<Move> moveList) {
+    this.moveList = moveList;
+    return this;
+  }
+
+  public MoveListResponse addMoveListItem(Move moveListItem) {
+    if (this.moveList == null) {
+      this.moveList = new ArrayList<Move>();
+    }
+    this.moveList.add(moveListItem);
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get moveList
+   * @return moveList
    **/
-  @Schema(example = "Entry deleted successfully", description = "")
-  
-    public String getMessage() {
-    return message;
+  @Schema(description = "")
+      @Valid
+    public List<Move> getMoveList() {
+    return moveList;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setMoveList(List<Move> moveList) {
+    this.moveList = moveList;
   }
 
 
@@ -47,21 +59,21 @@ public class InlineResponse204   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse204 inlineResponse204 = (InlineResponse204) o;
-    return Objects.equals(this.message, inlineResponse204.message);
+    MoveListResponse moveListResponse = (MoveListResponse) o;
+    return Objects.equals(this.moveList, moveListResponse.moveList);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message);
+    return Objects.hash(moveList);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse204 {\n");
+    sb.append("class MoveListResponse {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    moveList: ").append(toIndentedString(moveList)).append("\n");
     sb.append("}");
     return sb.toString();
   }

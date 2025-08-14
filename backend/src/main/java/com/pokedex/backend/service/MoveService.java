@@ -20,4 +20,8 @@ public class MoveService {
         }
         return null;
     }
+
+    public Move createMove(Move move) {
+        return this.moveDao.createEntity(move, "Move");
+    }
 }

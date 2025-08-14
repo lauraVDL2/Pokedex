@@ -136,19 +136,62 @@ paths:
         content:
           application/json:
             schema:
-              move:
-                $ref: '#/components/schemas/Move'
+              type: object
+              properties:
+                move:
+                  $ref: '#/components/schemas/Move'
       responses:
         '201':
           description: Move created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Move'
+                $ref: '#/components/schemas/MoveResponse'
+        '400':
+          description: Invalid input
+  /v1/pokedex/move/search:
+    post:
+      tags:
+        - Move
+      summary: Search moves
+      description: Search moves (by names) from the db.
+      operationId: post-move-search
+      requestBody:
+        description: String containing the names
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                names:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Move found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveListResponse'
         '400':
           description: Invalid input
 components:
   schemas:
+    MoveResponse:
+      title: 'MoveResponse'
+      type: object
+      properties:
+        move:
+          $ref: '#/components/schemas/Move'
+    MoveListResponse:
+      title: 'MoveListResponse'
+      type: object
+      properties:
+        moveList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Move'
     PokemonListResponse:
       title: 'PokemonListResponse'
       type: object
@@ -165,18 +208,20 @@ components:
           required: true
         description:
           type: string
+          required: true
         type:
           $ref: '#/components/schemas/PokemonType'
-        wayToLearn:
-          type: string
+          required: true
         power:
           type: integer
         accuracy:
           type: integer
         pp:
           type: integer
+          required: true
         category:
           type: string
+          required: true
           enum:
             - NON_DAMAGING
             - SPECIAL

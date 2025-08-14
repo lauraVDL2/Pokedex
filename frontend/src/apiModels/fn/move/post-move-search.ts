@@ -8,21 +8,20 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Move } from '../../models/move';
-import { MoveResponse } from '../../models/move-response';
+import { MoveListResponse } from '../../models/move-list-response';
 
-export interface PostMoveCreate$Params {
+export interface PostMoveSearch$Params {
   
     /**
-     * Move object that needs to be added
+     * String containing the names
      */
     body?: {
-'move'?: Move;
+'names'?: Array<string>;
 }
 }
 
-export function postMoveCreate(http: HttpClient, rootUrl: string, params?: PostMoveCreate$Params, context?: HttpContext): Observable<StrictHttpResponse<MoveResponse>> {
-  const rb = new RequestBuilder(rootUrl, postMoveCreate.PATH, 'post');
+export function postMoveSearch(http: HttpClient, rootUrl: string, params?: PostMoveSearch$Params, context?: HttpContext): Observable<StrictHttpResponse<MoveListResponse>> {
+  const rb = new RequestBuilder(rootUrl, postMoveSearch.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');
   }
@@ -32,9 +31,9 @@ export function postMoveCreate(http: HttpClient, rootUrl: string, params?: PostM
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<MoveResponse>;
+      return r as StrictHttpResponse<MoveListResponse>;
     })
   );
 }
 
-postMoveCreate.PATH = '/v1/pokedex/move';
+postMoveSearch.PATH = '/v1/pokedex/move/search';

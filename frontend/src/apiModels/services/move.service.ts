@@ -11,9 +11,12 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { Move } from '../models/move';
+import { MoveListResponse } from '../models/move-list-response';
+import { MoveResponse } from '../models/move-response';
 import { postMoveCreate } from '../fn/move/post-move-create';
 import { PostMoveCreate$Params } from '../fn/move/post-move-create';
+import { postMoveSearch } from '../fn/move/post-move-search';
+import { PostMoveSearch$Params } from '../fn/move/post-move-search';
 
 @Injectable({ providedIn: 'root' })
 export class MoveService extends BaseService {
@@ -34,7 +37,7 @@ export class MoveService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  postMoveCreate$Response(params?: PostMoveCreate$Params, context?: HttpContext): Observable<StrictHttpResponse<Move>> {
+  postMoveCreate$Response(params?: PostMoveCreate$Params, context?: HttpContext): Observable<StrictHttpResponse<MoveResponse>> {
     return postMoveCreate(this.http, this.rootUrl, params, context);
   }
 
@@ -48,9 +51,42 @@ export class MoveService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  postMoveCreate(params?: PostMoveCreate$Params, context?: HttpContext): Observable<Move> {
+  postMoveCreate(params?: PostMoveCreate$Params, context?: HttpContext): Observable<MoveResponse> {
     return this.postMoveCreate$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Move>): Move => r.body)
+      map((r: StrictHttpResponse<MoveResponse>): MoveResponse => r.body)
+    );
+  }
+
+  /** Path part for operation `postMoveSearch()` */
+  static readonly PostMoveSearchPath = '/v1/pokedex/move/search';
+
+  /**
+   * Search moves.
+   *
+   * Search moves (by names) from the db.
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `postMoveSearch()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  postMoveSearch$Response(params?: PostMoveSearch$Params, context?: HttpContext): Observable<StrictHttpResponse<MoveListResponse>> {
+    return postMoveSearch(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * Search moves.
+   *
+   * Search moves (by names) from the db.
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `postMoveSearch$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  postMoveSearch(params?: PostMoveSearch$Params, context?: HttpContext): Observable<MoveListResponse> {
+    return this.postMoveSearch$Response(params, context).pipe(
+      map((r: StrictHttpResponse<MoveListResponse>): MoveListResponse => r.body)
     );
   }
 

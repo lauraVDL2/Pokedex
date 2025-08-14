@@ -1,0 +1,22 @@
+<h2>Moves</h2>
+
+<div id="gridMoves">
+    <div class="firstRow">Name</div>
+    <div class="firstRow">Description</div>
+    <div class="firstRow">Type</div>
+    <div class="firstRow">Category</div>
+    <div class="firstRow">Power</div>
+    <div class="firstRow">Accuracy</div>
+    <div class="firstRow">PP</div>
+@for(move of moves; track move.name) {
+    <div>{{ move.name }}</div>
+    <div>{{ move.description }}</div>
+    <div>
+        <div [style.backgroundColor]="move?.type | pokemonType" class="moveType">{{ move?.type }}</div>
+    </div>
+    <div>{{ move?.category | moveCategory}}</div>
+    <div>{{ move?.power }}</div>
+    <div>{{ move?.accuracy }}</div>
+    <div>{{ move.pp }}</div>
+}
+</div>

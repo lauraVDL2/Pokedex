@@ -11,5 +11,4 @@ export interface Move {
   power?: number;
   pp?: number;
   type?: PokemonType;
-  wayToLearn?: string;
 }
