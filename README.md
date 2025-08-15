@@ -1,5 +1,5 @@
 # Pokedex
-This project is a Pokemon which is not using PokeApi ; I wrote my own APIs here.
+This project is a Pokedex which is not using PokeApi ; I wrote my own APIs here.
 Backend is using Spring Boot (with MongoDB database), frontend is using Angular.
 
 # Install
